@@ -1,5 +1,239 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* NAV CSS */
+nav {
+	display: flex;
+	justify-content: space-between;
+	padding: 1em 10em;
+	align-items: center;
+	position: sticky;
+	box-shadow: 2px 2px 4px lightgray;
+}
+.navLeft {
+	flex-grow: 0.5;
+}
+.navLeft ul {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.logo {
+	font-size: 2rem;
+}
+nav a {
+	color: gray;
+}
+
+/* INDEX CSS */
+/* HEADER */
+#indexHeader {
+	margin-bottom: 10em;
+}
+.banner img {
+	width: 80%;
+	height: 25em;
+	margin: auto;
+	border-radius: 0 0 100px 100px;
+}
+.bannerWrapper {
+	position: relative;
+}
+.bannerText {
+	position: absolute;
+	top: 15%;
+	left: 20%;
+	/* color: white; */
+	font-size: 4rem;
+	width: 30%;
+	font-weight: 800;
+}
+.shopCarContainer {
+	width: 40%;
+	padding: 2em;
+	border-radius: 20px;
+	box-shadow: 5px 5px 5px lightgray;
+	position: absolute;
+	bottom: -30%;
+	left: 30%;
+	background-color: white;
+}
+.shopCarContainer h1 {
+	margin-bottom: 20px;
+}
+.containerText {
+	display: flex;
+	justify-content: space-between;
+}
+
+/* CONTACT US CSS */
+/* HEADER */
+#contactHeader {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	margin: 3em auto;
+}
+.headerRight {
+	width: 30%;
+}
+
+/* MAIN */
+#contactMain {
+	margin: auto;
+	padding: 2em 15em;
+}
+.contactWrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 3em;
+	grid-template-areas:
+		'callortext form'
+		'chatwithus form';
+}
+.callOrText {
+	grid-area: callortext;
+}
+.chatWithUs {
+	grid-area: chatwithus;
+}
+.contactForm {
+	grid-area: form;
+}
+.contactButton {
+	padding: 1em 1.5em;
+	color: white;
+	background-color: black;
+	width: fit-content;
+	border-radius: 10px;
+}
+.contactWrapper h2 {
+	margin-bottom: 10px;
+}
+.hours div {
+	margin: 1em 0;
+}
+.contactForm form {
+	display: flex;
+	flex-direction: column;
+}
+form :is(label) {
+	color: gray;
+	margin-top: 20px;
+}
+form :is(input, select) {
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	padding: 0.4em;
+}
+form button {
+	margin-top: 20px;
+	padding: 0.4em;
+	border: none;
+	color: white;
+	background-color: lightgray;
+	border-radius: 5px;
+}
+
+.locationWrapper {
+	margin: auto;
+	padding: 0 15em;
+	display: flex;
+	flex-direction: column;
+}
+.officeLocation {
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.location {
+	display: flex;
+	justify-content: space-between;
+}
+.headquarters {
+	margin-right: 10em;
+}
+
+/* FOOTER */
+
+#footerWrapper {
+	background-color: #fafafa;
+	display: grid;
+	padding: 5em 25em;
+	gap: 5em;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+/* SHOP CARS */
+/* HEADER */
+.searchBar form {
+	width: 40%;
+	border: 1px solid lightgray;
+	margin-left: 30%;
+	margin-top: 20px;
+	padding: 0.3em 1.3em;
+	border-radius: 40px;
+	display: flex;
+	align-items: center;
+	box-shadow: 0px 0px 5px lightgray;
+}
+
+.searchBar input {
+	border: none;
+	width: 100%;
+	margin-left: 30px;
+}
+
+/* MAIN */
+#shopMain {
+	padding: 2em 15em;
+}
+.cardBody {
+	margin-top: 1em;
+}
+.carPrice {
+	color: gray;
+	font-size: small;
+}
+#shopMainWrapper {
+	display: grid;
+	gap: 1em;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+/* INDEX */
+/* MAIN */
+.featuredCars {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+	width: 80%;
+	margin: 20px auto;
+}
+.featuredCars .carTitle {
+	font-size: 1.3rem;
+}
+.featuredCars .carPrice {
+	font-size: larger;
+}
+.moreBtn {
+	padding: 1em;
+	text-align: center;
+	grid-column: 2/3;
+	background-color: lightgray;
+	color: white;
+	border-radius: 30px;
+}
+.reviewWrapper {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	width: 70%;
+	margin: auto;
+	gap: 1.5em;
+	margin-bottom: 20px;
+}
+.reviewCard {
+	box-shadow: 0 0 5px lightgray;
+	border-radius: 10px;
+}
+.reviewCard .cardBody {
+	padding: 1em;
 }
