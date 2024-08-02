@@ -237,3 +237,42 @@ form button {
 .reviewCard .cardBody {
 	padding: 1em;
 }
+
+/* DETAIL PAGE */
+/* MAIN */
+#detailMain {
+	margin: 3em 15em;
+}
+#detailWrapper {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.carImage {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0.3em;
+	width: 50%;
+}
+.subImage {
+	display: flex;
+	gap: 0.3em;
+	overflow: hidden;
+}
+.subImage img {
+	width: 20%;
+}
+.carDetail a {
+	padding: 1em;
+	background-color: lightgray;
+	border-radius: 30px;
+	color: white;
+}
+.carDetail p {
+	color: gray;
+	font-size: smaller;
+	margin-bottom: 2em;
+}
+.carDetail h2:first-of-type {
+	font-weight: 400;
+}
