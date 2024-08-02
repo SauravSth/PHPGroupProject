@@ -8,7 +8,7 @@ nav {
 	box-shadow: 2px 2px 4px lightgray;
 }
 .navLeft {
-	flex-grow: 0.5;
+	flex-grow: 0.3;
 }
 .navLeft ul {
 	display: flex;
@@ -21,7 +21,22 @@ nav {
 nav a {
 	color: gray;
 }
-
+.btnHover {
+	cursor: pointer;
+	&:hover {
+		background-color: black;
+		color: white;
+		transition: all 0.3s;
+	}
+}
+.btnHoverNight {
+	cursor: pointer;
+	&:hover {
+		background-color: gray;
+		color: white;
+		transition: all 0.3s;
+	}
+}
 /* INDEX CSS */
 /* HEADER */
 #indexHeader {
@@ -62,7 +77,22 @@ nav a {
 	display: flex;
 	justify-content: space-between;
 }
-
+.iconNight {
+	background-color: black;
+	border-radius: 50%;
+	width: 10%;
+}
+.icon {
+	border-radius: 50%;
+	width: 4%;
+}
+.rating {
+	display: flex;
+	margin-bottom: 10px;
+}
+.rating img {
+	width: 15%;
+}
 /* CONTACT US CSS */
 /* HEADER */
 #contactHeader {
