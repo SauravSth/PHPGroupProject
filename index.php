@@ -62,6 +62,7 @@ if (!empty($models)) {
             <th>Price</th>
             <th>Description</th>
             <th>Image</th>
+            <th>Action</th>
           </tr>";
 
     // Display each row
@@ -76,6 +77,7 @@ if (!empty($models)) {
         echo "<td>" . htmlspecialchars($model['price']) . "</td>";
         echo "<td>" . htmlspecialchars($model['description']) . "</td>";
         echo "<td><img src='./public/img" . htmlspecialchars($model['image']) . "' alt='" . htmlspecialchars($model['name']) . "' style='width:100px;'></td>";
+        echo "<td><a href='./db_queries/add_to_cart.php?model_id=" . htmlspecialchars($model['id']) . "'>Add to Cart</a></td>";
         echo "</tr>";
     }
     echo "</table>";

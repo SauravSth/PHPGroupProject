@@ -8,9 +8,12 @@ class Database {
     private $dbname = "cars";
     private $conn;
 
-    public function __construct() {
-        $this->secureSession();
-        session_start();  // Start session
+      public function __construct() {
+        // Ensure session is started only if not already started
+        if (session_status() === PHP_SESSION_NONE) {
+            $this->secureSession();
+            session_start();
+        }
         $this->connectDB();
     }
 
@@ -20,6 +23,11 @@ class Database {
             error_log("Connection failed: " . $this->conn->connect_error);  // Log the error
             throw new Exception("Database connection failed");  // Throw an exception
         }
+    }
+
+   // Getter for the $conn property
+    public function getConn() {
+        return $this->conn;
     }
 
     private function secureSession() {
@@ -38,12 +46,10 @@ class Database {
         return htmlspecialchars(strip_tags($data));
     }
 
-
-public function query($sql, $params = []) {
+    public function query($sql, $params = []) {
         $stmt = $this->conn->prepare($sql);
 
         if ($params) {
-            // Dynamically generate the types string based on the number of parameters
             $types = str_repeat('s', count($params));  // Assuming all parameters are strings; adjust as needed
             $stmt->bind_param($types, ...$params);
         }
@@ -185,18 +191,108 @@ public function query($sql, $params = []) {
         ]);
     }
 
-
-
-
     public function __destruct() {
         $this->conn->close();
     }
 }
 
+class Cart {
+    private $db;
+
+    public function __construct() {
+        $this->db = new Database();
+    }
+
+    public function addItem($userId, $modelId, $quantity = 1) {
+        $userId = $this->db->sanitize($userId);
+        $modelId = $this->db->sanitize($modelId);
+        $quantity = $this->db->sanitize($quantity);
+
+        // Check if item is already in the cart
+        $existingItem = $this->db->read('cart', ['user_id' => $userId, 'model_id' => $modelId]);
+
+        if ($existingItem) {
+            // Update quantity if item already exists
+            $newQuantity = $existingItem[0]['quantity'] + $quantity;
+            $this->db->update('cart', ['quantity' => $newQuantity], ['user_id' => $userId, 'model_id' => $modelId]);
+        } else {
+            // Add new item to the cart
+            $this->db->create('cart', ['user_id', 'model_id', 'quantity'], [$userId, $modelId, $quantity]);
+        }
+    }
+
+    public function removeItem($userId, $modelId) {
+        $userId = $this->db->sanitize($userId);
+        $modelId = $this->db->sanitize($modelId);
+
+        $this->db->delete('cart', ['user_id' => $userId, 'model_id' => $modelId]);
+    }
+
+    public function updateItem($userId, $modelId, $quantity) {
+        $userId = $this->db->sanitize($userId);
+        $modelId = $this->db->sanitize($modelId);
+        $quantity = $this->db->sanitize($quantity);
+
+        $this->db->update('cart', ['quantity' => $quantity], ['user_id' => $userId, 'model_id' => $modelId]);
+    }
+
+    public function getCartItems($userId) {
+        $userId = $this->db->sanitize($userId);
+
+        return $this->db->read('cart', ['user_id' => $userId]);
+    }
+
+    public function checkout($userId) {
+        $userId = $this->db->sanitize($userId);
+
+        // Get cart items
+        $cartItems = $this->getCartItems($userId);
+
+        if (empty($cartItems)) {
+            return false;  // No items in the cart
+        }
+
+        // Calculate total amount
+        $totalAmount = 0;
+        foreach ($cartItems as $item) {
+            $model = $this->db->read('models', ['id' => $item['model_id']]);
+            $totalAmount += $model[0]['price'] * $item['quantity'];
+        }
+
+        // Create order
+        $orderCreated = $this->db->create('orders', ['user_id', 'total_amount', 'order_status', 'payment_status'], [$userId, $totalAmount, 'pending', 'pending']);
+
+        if ($orderCreated) {
+            $orderId = $this->db->getConn()->insert_id;  // Get the last inserted order id
+
+            // Add order items
+            foreach ($cartItems as $item) {
+                $model = $this->db->read('models', ['id' => $item['model_id']]);
+                $this->db->create('order_items', ['order_id', 'model_id', 'quantity', 'price'], [$orderId, $item['model_id'], $item['quantity'], $model[0]['price']]);
+            }
+
+            // Clear cart
+            $this->db->delete('cart', ['user_id' => $userId]);
+
+            return true;  // Successful checkout
+        }
+
+        return false;  // Checkout failed
+    }
+}
 
 // Usage Example
 // $db = new Database();
 // $db->create('table_name', ['column1', 'column2'], ['value1', 'value2']);
 // $result = $db->read('table_name', ['column1' => 'value1'])
+// $cart = new Cart();
+// $cart->addItem(1, 2, 3);
+// $cartItems = $cart->getCartItems(1);
+// $cart->removeItem(1, 2);
+// $cart->updateItem(1, 2, 5);
+// $cart->checkout(1);
+?>
+
+
 
 
