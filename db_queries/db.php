@@ -78,34 +78,27 @@ public function query($sql, $params = []) {
     if (!empty($conditions)) {
         $sql .= " WHERE " . implode(' AND ', array_map(fn($key) => "$key = ?", array_keys($conditions)));
     }
-
     if ($limit !== null) {
         $sql .= " LIMIT ?";
     }
-
     $stmt = $this->conn->prepare($sql);
     if (!$stmt) {
         error_log("Prepare failed: " . $this->conn->error);  // Log prepare error
         return false;
     }
-
     $types = '';
     $params = [];
-
     if (!empty($conditions)) {
         $types .= str_repeat('s', count($conditions));
         $params = array_values($conditions);
     }
-
     if ($limit !== null) {
         $types .= 'i';  // Add integer type for limit
         $params[] = $limit;  // Add limit to parameters
     }
-
     if ($types) {
         $stmt->bind_param($types, ...$params);
     }
-
     $stmt->execute();
     $result = $stmt->get_result();
     return $result->fetch_all(MYSQLI_ASSOC);
