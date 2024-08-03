@@ -1,10 +1,18 @@
+<?php
+      require_once './db_queries/db.php';
+
+      $db = new Database();
+
+     	$models = $db->read('models', [], 3);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="./css/reset.css" />
-		<link rel="stylesheet" href="./css/styles.css" />
+		<link rel="stylesheet" href="./public/css/reset.css" />
+		<link rel="stylesheet" href="./public/css/styles.css" />
 		<title>Car Store | Home</title>
 	</head>
 	<body>
@@ -12,7 +20,7 @@
 			<div class="navLeft">
 				<ul>
 					<li class="logo">
-						<a href="./index.php">Store Name</a>
+						<a href="./home.php">Store Name</a>
 					</li>
 					<li><a href="./shop.php">Shop Cars</a></li>
 					<li><a href="./contact.php">Contact Us</a></li>
@@ -25,7 +33,7 @@
 		<header id="indexHeader">
 			<div class="bannerWrapper">
 				<div class="banner">
-					<img src="./img/webp/ford-f150xt.webp" alt="Car" />
+					<img src="./public/img/webp/ford-f150xt.webp" alt="Car" />
 					<div class="bannerText">
 						The smart way to buy or sell a car
 					</div>
@@ -38,7 +46,7 @@
 						</span>
 						<span class="iconNight"
 							><img
-								src="./img/icons/arrow-sm-right-svgrepo-com.svg"
+								src="./public/img/icons/arrow-sm-right-svgrepo-com.svg"
 								alt=""
 						/></span>
 					</div>
@@ -47,54 +55,25 @@
 		</header>
 		<main id="indexMain">
 			<div class="featuredCars">
-				<div class="carCard">
-					<div class="cardHeader">
-						<img
-							src="./img/webp/dodge-challenger-1.webp"
-							alt="Car"
-						/>
-					</div>
-					<div class="cardBody">
-						<p class="carTitle">
-							<strong>
-								Laboris commodo commodo incididunt id.
-							</strong>
-						</p>
-						<p class="carPrice">$10000</p>
-					</div>
-				</div>
-				<div class="carCard">
-					<div class="cardHeader">
-						<img
-							src="./img/webp/dodge-challenger-1.webp"
-							alt="Car"
-						/>
-					</div>
-					<div class="cardBody">
-						<p class="carTitle">
-							<strong>
-								Laboris commodo commodo incididunt id.
-							</strong>
-						</p>
-						<p class="carPrice">$10000</p>
-					</div>
-				</div>
-				<div class="carCard">
-					<div class="cardHeader">
-						<img
-							src="./img/webp/dodge-challenger-1.webp"
-							alt="Car"
-						/>
-					</div>
-					<div class="cardBody">
-						<p class="carTitle">
-							<strong>
-								Laboris commodo commodo incididunt id.
-							</strong>
-						</p>
-						<p class="carPrice">$10000</p>
-					</div>
-				</div>
+				<?php
+					if (!empty($models)){
+						foreach ($models as $model) {
+						$make = $db->read('makes', ['id' => $model['make_id']],1);
+						$make = $makeResult[0]['name'] ?? 'Unknown';
+
+						echo '<div class="carCard">';
+						echo '  <div class="cardHeader">';
+						echo '      <img src="./public/img' . htmlspecialchars($model['image']) . '" alt="' . htmlspecialchars($model['name']) . '"/>';
+						echo '  </div>';
+						echo '  <div class="cardBody">';
+						echo '      <p class="carTitle"><strong>' . htmlspecialchars($make) . ' ' . htmlspecialchars($model['name']) . '</strong></p>';
+						echo '      <p class="carPrice">$' . number_format($model['price'], 2) . '</p>';
+						echo '  </div>';
+						echo '</div>';
+						}
+					}
+				?>
+				
 				<a class="moreBtn btnHover" href="./shop.php">View All</a>
 			</div>
 			<section id="reviews">
@@ -102,29 +81,29 @@
 					<div class="reviewCard">
 						<div class="cardHeader">
 							<img
-								src="./img/webp/dodge-challenger-1.webp"
+								src="./public/img/webp/dodge-challenger-1.webp"
 								alt="Car"
 							/>
 						</div>
 						<div class="cardBody">
 							<div class="rating">
 								<img
-									src="./img/icons/star-sharp-svgrepo-com.svg"
+									src="./public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./img/icons/star-sharp-svgrepo-com.svg"
+									src="./public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./img/icons/star-sharp-svgrepo-com.svg"
+									src="./public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./img/icons/star-sharp-svgrepo-com.svg"
+									src="./public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
@@ -141,29 +120,29 @@
 					<div class="reviewCard">
 						<div class="cardHeader">
 							<img
-								src="./img/webp/dodge-challenger-1.webp"
+								src="./public/img/webp/hyundai-elantra.webp"
 								alt="Car"
 							/>
 						</div>
 						<div class="cardBody">
 							<div class="rating">
 								<img
-									src="./img/icons/star-sharp-svgrepo-com.svg"
+									src="./public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./img/icons/star-sharp-svgrepo-com.svg"
+									src="./public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./img/icons/star-sharp-svgrepo-com.svg"
+									src="./public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./img/icons/star-sharp-svgrepo-com.svg"
+									src="./public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
@@ -180,29 +159,29 @@
 					<div class="reviewCard">
 						<div class="cardHeader">
 							<img
-								src="./img/webp/dodge-challenger-1.webp"
+								src="./public/img/webp/tesla-model-3.webp"
 								alt="Car"
 							/>
 						</div>
 						<div class="cardBody">
 							<div class="rating">
 								<img
-									src="./img/icons/star-sharp-svgrepo-com.svg"
+									src="./public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./img/icons/star-sharp-svgrepo-com.svg"
+									src="./public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./img/icons/star-sharp-svgrepo-com.svg"
+									src="./public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./img/icons/star-sharp-svgrepo-com.svg"
+									src="./public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
@@ -219,29 +198,29 @@
 					<div class="reviewCard">
 						<div class="cardHeader">
 							<img
-								src="./img/webp/dodge-challenger-1.webp"
+								src="./public/img/webp/kia-rio.webp"
 								alt="Car"
 							/>
 						</div>
 						<div class="cardBody">
 							<div class="rating">
 								<img
-									src="./img/icons/star-sharp-svgrepo-com.svg"
+									src="./public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./img/icons/star-sharp-svgrepo-com.svg"
+									src="./public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./img/icons/star-sharp-svgrepo-com.svg"
+									src="./public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./img/icons/star-sharp-svgrepo-com.svg"
+									src="./public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>

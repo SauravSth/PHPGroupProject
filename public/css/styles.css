@@ -276,6 +276,10 @@ form button {
 .reviewCard {
 	box-shadow: 0 0 5px lightgray;
 	border-radius: 10px;
+	transition: all 0.3s;
+	&:hover {
+		filter: brightness(60%);
+	}
 }
 .reviewCard .cardBody {
 	padding: 1em;

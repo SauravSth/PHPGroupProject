@@ -19,7 +19,7 @@
 			<div class="navLeft">
 				<ul>
 					<li class="logo">
-						<a href="./index.php">Store Name</a>
+						<a href="./home.php">Store Name</a>
 					</li>
 					<li><a href="./shop.php">Shop Cars</a></li>
 					<li><a href="./contact.php">Contact Us</a></li>
