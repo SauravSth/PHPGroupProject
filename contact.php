@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="./css/reset.css" />
-		<link rel="stylesheet" href="./css/styles.css" />
+		<link rel="stylesheet" href="./public/css/reset.css" />
+		<link rel="stylesheet" href="./public/css/styles.css" />
 		<title>Document</title>
 	</head>
 	<body>
@@ -12,10 +12,10 @@
 			<div class="navLeft">
 				<ul>
 					<li class="logo">
-						<a href="./index.html">Store Name</a>
+						<a href="./index.php">Store Name</a>
 					</li>
-					<li><a href="./shop.html">Shop Cars</a></li>
-					<li><a href="./contact.html">Contact Us</a></li>
+					<li><a href="./shop.php">Shop Cars</a></li>
+					<li><a href="./contact.php">Contact Us</a></li>
 				</ul>
 			</div>
 			<div class="navRight">
@@ -28,7 +28,7 @@
 				<h2>Got a question? We're here to help.</h2>
 			</div>
 			<div class="headerRight">
-				<img src="./img/webp/honda-civic-touring.webp" alt="Car" />
+				<img src="./public/img/webp/honda-civic-touring.webp" alt="Car" />
 			</div>
 		</header>
 		<main id="contactMain">

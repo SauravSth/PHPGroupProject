@@ -12,10 +12,10 @@
 			<div class="navLeft">
 				<ul>
 					<li class="logo">
-						<a href="./index.html">Store Name</a>
+						<a href="./index.php">Store Name</a>
 					</li>
-					<li><a href="./shop.html">Shop Cars</a></li>
-					<li><a href="./contact.html">Contact Us</a></li>
+					<li><a href="./shop.php">Shop Cars</a></li>
+					<li><a href="./contact.php">Contact Us</a></li>
 				</ul>
 			</div>
 			<div class="navRight">
@@ -95,7 +95,7 @@
 						<p class="carPrice">$10000</p>
 					</div>
 				</div>
-				<a class="moreBtn btnHover" href="./shop.html">View All</a>
+				<a class="moreBtn btnHover" href="./shop.php">View All</a>
 			</div>
 			<section id="reviews">
 				<div class="reviewWrapper">

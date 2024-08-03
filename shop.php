@@ -1,10 +1,17 @@
+<?php
+      require_once './db_queries/db.php';
+
+      $db = new Database();
+
+      $models = $db->read('models');
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="./css/reset.css" />
-		<link rel="stylesheet" href="./css/styles.css" />
+		<link rel="stylesheet" href="./public/css/reset.css" />
+		<link rel="stylesheet" href="./public/css/styles.css" />
 		<title>Document</title>
 	</head>
 	<body>
@@ -12,50 +19,49 @@
 			<div class="navLeft">
 				<ul>
 					<li class="logo">
-						<a href="./index.html">Store Name</a>
+						<a href="./index.php">Store Name</a>
 					</li>
-					<li><a href="./shop.html">Shop Cars</a></li>
-					<li><a href="./contact.html">Contact Us</a></li>
+					<li><a href="./shop.php">Shop Cars</a></li>
+					<li><a href="./contact.php">Contact Us</a></li>
 				</ul>
 			</div>
 			<div class="navRight">
 				<a href="login">Login or Signup</a>
 			</div>
 		</nav>
-		<header></header>
-		<main id="detailMain">
-			<div id="detailWrapper">
-				<div class="carImage">
-					<img src="./img/webp/dodge-challenger-1.webp" alt="car" />
-					<div class="subImage">
-						<img
-							src="./img/webp/dodge-challenger-1.webp"
-							alt="car"
-						/>
-						<img
-							src="./img/webp/dodge-challenger-1.webp"
-							alt="car"
-						/>
-						<img
-							src="./img/webp/dodge-challenger-1.webp"
-							alt="car"
-						/>
-						<img
-							src="./img/webp/dodge-challenger-1.webp"
-							alt="car"
-						/>
-						<img
-							src="./img/webp/dodge-challenger-1.webp"
-							alt="car"
-						/>
+		<header>
+			<div class="searchBar">
+				<form action="">
+					<div class="icon">
+						<img src="./public/img/icons/search-svgrepo-com.svg" alt="" />
 					</div>
-				</div>
-				<div class="carDetail">
-					<h2>Dodge Challenger</h2>
-					<h2>$30000</h2>
-					<p>$50 Shipping</p>
-					<a href="" class="btnHover">Start Purchase</a>
-				</div>
+					<input
+						type="text"
+						placeholder="Search vehicle, model, etc."
+					/>
+				</form>
+			</div>
+		</header>
+		<main id="shopMain">
+			<div id="shopMainWrapper">
+				<?php
+					if (!empty($models)){
+						foreach ($models as $model) {
+						// Fetch the make name using the make_id
+						$make = $db->read('makes', ['id' => $model['make_id']])[0]['name'];
+
+						echo '<div class="carCard">';
+						echo '  <div class="cardHeader">';
+						echo '      <img src="./public/img' . htmlspecialchars($model['image']) . '" alt="' . htmlspecialchars($model['name']) . '"/>';
+						echo '  </div>';
+						echo '  <div class="cardBody">';
+						echo '      <p class="carTitle"><strong>' . htmlspecialchars($make) . ' ' . htmlspecialchars($model['name']) . '</strong></p>';
+						echo '      <p class="carPrice">$' . number_format($model['price'], 2) . '</p>';
+						echo '  </div>';
+						echo '</div>';
+						}
+					}
+				?>
 			</div>
 		</main>
 		<footer>

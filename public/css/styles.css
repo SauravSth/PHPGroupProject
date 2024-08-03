@@ -224,6 +224,11 @@ form button {
 #shopMain {
 	padding: 2em 15em;
 }
+.carCard:hover {
+	transform: scale(1.05);
+	transition: all 0.5s;
+	filter: brightness(60%);
+}
 .cardBody {
 	margin-top: 1em;
 }
@@ -234,7 +239,7 @@ form button {
 #shopMainWrapper {
 	display: grid;
 	gap: 1em;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 }
 
 /* INDEX */
