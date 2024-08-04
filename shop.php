@@ -48,9 +48,7 @@
 					if (!empty($models)){
 					foreach ($models as $model) {
 						$make = $db->read('makes', ['id' => $model['make_id']])[0]['name'];
-						
 						echo '<a href="details.php?id=' . $model['id'] . '" class="carCard">'; 
-
 						echo '  <div class="cardHeader">';
 						echo '      <img src="./public/img' . htmlspecialchars($model['image']) . '" alt="' . htmlspecialchars($model['name']) . '"/>';
 						echo '  </div>';
