@@ -58,7 +58,7 @@
 				<?php
 					if (!empty($models)){
 						foreach ($models as $model) {
-						$make = $db->read('makes', ['id' => $model['make_id']],1);
+						$makeResult = $db->read('makes', ['id' => $model['make_id']],1);
 						$make = $makeResult[0]['name'] ?? 'Unknown';
 
 						echo '<div class="carCard">';
