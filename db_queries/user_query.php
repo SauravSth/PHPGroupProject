@@ -2,7 +2,7 @@
 
 
 // CREATE
-require_once 'db_conn.php';
+require_once 'db.php';
 
 $db = new Database();
 
@@ -29,7 +29,7 @@ if ($db->create('users', $fields, $values)) {
 
 // READ
 
-require_once 'db_conn.php';
+require_once 'db.php';
 
 $db = new Database();
 
@@ -46,7 +46,7 @@ if ($user) {
 
 
 // UPDATE
-require_once 'db_conn.php';
+require_once 'db.php';
 
 $db = new Database();
 
@@ -67,7 +67,7 @@ if ($db->update('users', $data, $conditions)) {
 
 
 // DELETE 
-require_once 'db_conn.php';
+require_once 'db.php';
 
 $db = new Database();
 

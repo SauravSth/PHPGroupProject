@@ -37,7 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 session_regenerate_id(true);
                 $_SESSION['user_id'] = $user[0]['id'];
                 $_SESSION['email'] = $user[0]['email'];
-                $_SESSION['user_type'] = $user[0]['user_type'];
+				$_SESSION['user_type'] = $user[0]['user_type'];
+                
                 // Redirect to a protected page or dashboard
                 header("Location: index.php");
                 exit;
@@ -54,32 +55,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/css/reset.css">
-    <link href="./public/css/styles.css" rel="stylesheet" />
-    <title>Login</title>
+    <link rel="stylesheet" href="./public/css/reset.css" />
+	<link rel="stylesheet" href="./public/css/styles.css" />
+	<title>Login</title>
 </head>
+
 <body>
     		<?php include './nav.php' ?>
 
     <h1>Login</h1>
     
-    <?php if (!empty($errors)): ?>
-        <div class="errors">
-            <?php foreach ($errors as $error): ?>
-                <p><?php echo htmlspecialchars($error); ?></p>
-            <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
+        <?php if (!empty($errors)): ?>
+            <div class="errors">
+                <?php foreach ($errors as $error): ?>
+                    <p><?php echo htmlspecialchars($error); ?></p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
     
-    <form method="POST" action="login.php">
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" value="<?php echo isset($email) ? htmlspecialchars($email) : ''; ?>"><br>
-        
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password"><br>
-        
-        <input type="submit" value="Login">
-    </form>
+            <form method="POST" action="login.php" id="loginForm">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" value="<?php echo isset($email) ? htmlspecialchars($email) : ''; ?>"><br>
+                
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password"><br>
+                
+                <input type="submit" value="Login" id="loginBtn">
+            </form>
     
     <a href="signup.php">Don't have an account? Sign up here</a>
     		<?php include './footer.php' ?>

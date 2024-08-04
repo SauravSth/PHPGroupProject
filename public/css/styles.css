@@ -1,367 +1,447 @@
 /* NAV CSS */
 nav {
-	display: flex;
-	justify-content: space-between;
-	padding: 1em 10em;
-	align-items: center;
-	position: sticky;
-	box-shadow: 2px 2px 4px lightgray;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 10em;
+  align-items: center;
+  position: sticky;
+  box-shadow: 2px 2px 4px lightgray;
 }
 .navLeft {
-	flex-grow: 0.3;
+  flex-grow: 0.3;
 }
 .navLeft ul {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .logo {
-	font-size: 2rem;
+  font-size: 2rem;
 }
 nav a {
-	color: gray;
-	&:hover {
-		color: black;
-		transition: all 0.3s;
-		text-decoration: underline;
-		text-underline-offset: 5px;
-		text-decoration-thickness: 3px;
-	}
+  color: gray;
+  &:hover {
+    color: black;
+    transition: all 0.3s;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 3px;
+  }
 }
 .btnHover {
-	cursor: pointer;
-	border-radius: 30px;
-	padding: 1em;
-	margin: 0;
-	&:hover {
-		background-color: black;
-		color: white;
-		transition: all 0.3s;
-	}
+  cursor: pointer;
+  border-radius: 30px;
+  padding: 1em;
+  margin: 0;
+  &:hover {
+    background-color: black;
+    color: white;
+    transition: all 0.3s;
+  }
 }
 .btnHoverNight {
-	cursor: pointer;
-	&:hover {
-		background-color: gray;
-		color: white;
-		transition: all 0.3s;
-	}
+  cursor: pointer;
+  &:hover {
+    background-color: gray;
+    color: white;
+    transition: all 0.3s;
+  }
 }
 /* INDEX CSS */
 /* HEADER */
 #indexHeader {
-	margin-bottom: 10em;
+  margin-bottom: 10em;
 }
 .banner img {
-	width: 80%;
-	height: 25em;
-	margin: auto;
-	border-radius: 0 0 100px 100px;
+  width: 80%;
+  height: 25em;
+  margin: auto;
+  border-radius: 0 0 100px 100px;
 }
 .bannerWrapper {
-	position: relative;
+  position: relative;
 }
 .bannerText {
-	position: absolute;
-	top: 15%;
-	left: 20%;
-	/* color: white; */
-	font-size: 4rem;
-	width: 30%;
-	font-weight: 800;
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  /* color: white; */
+  font-size: 4rem;
+  width: 30%;
+  font-weight: 800;
 }
 .shopCarContainer {
-	width: 40%;
-	padding: 2em;
-	border-radius: 20px;
-	box-shadow: 5px 5px 5px lightgray;
-	position: absolute;
-	bottom: -30%;
-	left: 30%;
-	background-color: white;
+  width: 40%;
+  padding: 2em;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px lightgray;
+  position: absolute;
+  bottom: -30%;
+  left: 30%;
+  background-color: white;
 }
 .shopCarContainer h1 {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 .containerText {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .iconNight {
-	background-color: black;
-	border-radius: 50%;
-	width: 8%;
-	cursor: pointer;
+  background-color: black;
+  border-radius: 50%;
+  width: 8%;
+  cursor: pointer;
 }
 .icon {
-	border-radius: 50%;
-	width: 4%;
+  border-radius: 50%;
+  width: 4%;
 }
 .rating {
-	display: flex;
-	margin-bottom: 10px;
+  display: flex;
+  margin-bottom: 10px;
 }
 .rating img {
-	width: 15%;
+  width: 15%;
 }
 /* CONTACT US CSS */
 /* HEADER */
 #contactHeader {
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	margin: 3em auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 3em auto;
 }
 .headerRight {
-	width: 30%;
+  width: 30%;
 }
 
 /* MAIN */
 #contactMain {
-	margin: auto;
-	padding: 2em 15em;
+  margin: auto;
+  padding: 2em 15em;
 }
 .contactWrapper {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	column-gap: 3em;
-	grid-template-areas:
-		'callortext form'
-		'chatwithus form';
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 3em;
+  grid-template-areas:
+    'callortext form'
+    'chatwithus form';
 }
 .callOrText {
-	grid-area: callortext;
+  grid-area: callortext;
 }
 .chatWithUs {
-	grid-area: chatwithus;
+  grid-area: chatwithus;
 }
 .contactForm {
-	grid-area: form;
+  grid-area: form;
 }
 .contactButton {
-	padding: 1em 1.5em;
-	color: white;
-	background-color: black;
-	width: fit-content;
-	border-radius: 10px;
+  padding: 1em 1.5em;
+  color: white;
+  background-color: black;
+  width: fit-content;
+  border-radius: 10px;
 }
 .contactWrapper h2 {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 .hours div {
-	margin: 1em 0;
+  margin: 1em 0;
 }
 .contactForm form {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 form :is(label) {
-	color: gray;
-	margin-top: 20px;
+  color: gray;
+  margin-top: 20px;
 }
 form :is(input, select) {
-	border: 1px solid lightgray;
-	border-radius: 5px;
-	padding: 0.4em;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 0.4em;
 }
 form button {
-	margin-top: 20px;
-	padding: 0.4em;
-	border: none;
-	color: white;
-	background-color: lightgray;
-	border-radius: 5px;
+  margin-top: 20px;
+  padding: 0.4em;
+  border: none;
+  color: white;
+  background-color: lightgray;
+  border-radius: 5px;
 }
 
 .locationWrapper {
-	margin: auto;
-	padding: 0 15em;
-	display: flex;
-	flex-direction: column;
+  margin: auto;
+  padding: 0 15em;
+  display: flex;
+  flex-direction: column;
 }
 .officeLocation {
-	display: flex;
-	flex-direction: column;
-	margin-top: 20px;
-	margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .location {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .headquarters {
-	margin-right: 10em;
+  margin-right: 10em;
 }
 
 /* FOOTER */
 
 #footerWrapper {
-	background-color: #fafafa;
-	display: grid;
-	padding: 5em 25em;
-	gap: 5em;
-	grid-template-columns: repeat(3, 1fr);
+  background-color: #fafafa;
+  display: grid;
+  padding: 5em 25em;
+  gap: 5em;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 /* SHOP CARS */
 /* HEADER */
 
 #shopHeader form {
-	width: 40%;
-	margin-left: 30%;
-	margin-top: 20px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding: 0.3em 1.3em;
-	border: 1px solid lightgray;
-	box-shadow: 0px 0px 5px lightgray;
-	border-radius: 40px;
+  width: 40%;
+  margin-left: 30%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.3em 1.3em;
+  border: 1px solid lightgray;
+  box-shadow: 0px 0px 5px lightgray;
+  border-radius: 40px;
 }
 .searchBar {
-	display: flex;
-	align-items: center;
-	padding: 0.3em 1.3em;
+  display: flex;
+  align-items: center;
+  padding: 0.3em 1.3em;
 }
 .searchBar input {
-	border: none;
-	width: 100%;
-	margin-left: 30px;
-	border-bottom: 1px solid lightgray;
+  border: none;
+  width: 100%;
+  margin-left: 30px;
+  border-bottom: 1px solid lightgray;
 }
 .shopFormAlt {
-	padding: 0.3em 1.3em;
-	margin: 20px 0;
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
+  padding: 0.3em 1.3em;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 .carPriceRange {
-	margin-left: 40px;
+  margin-left: 40px;
 }
 #shopHeader input[type='submit'] {
-	width: 50%;
-	margin-bottom: 10px;
-	background-color: lightgray;
-	color: white;
-	&:hover {
-		cursor: pointer;
-		transition: all 0.3s;
-		background-color: black;
-	}
+  width: 50%;
+  margin-bottom: 10px;
+  background-color: lightgray;
+  color: white;
+  &:hover {
+    cursor: pointer;
+    transition: all 0.3s;
+    background-color: black;
+  }
 }
 /* MAIN */
 #shopMain {
-	padding: 2em 15em;
+  padding: 2em 15em;
 }
 .carCard {
-	overflow: hidden;
-	position: relative;
+  overflow: hidden;
+  position: relative;
 }
 .carCard img {
-	width: 100%;
-	height: 100%;
-	transition: transform 0.5s ease;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
 }
 .carCard:hover img {
-	transform: scale(1.05);
-	transition: all 0.5s;
-	filter: brightness(60%);
+  transform: scale(1.05);
+  transition: all 0.5s;
+  filter: brightness(60%);
 }
 .cardBody {
-	margin-top: 1em;
+  margin-top: 1em;
 }
 .carPrice {
-	color: gray;
-	font-size: small;
+  color: gray;
+  font-size: small;
 }
 #shopMainWrapper {
-	display: grid;
-	gap: 1em;
-	grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  gap: 1em;
+  grid-template-columns: repeat(3, 1fr);
 }
 #shopMainWrapper a {
-	color: black;
+  color: black;
 }
 
 /* INDEX */
 /* MAIN */
 .featuredCars {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 10px;
-	width: 80%;
-	margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 80%;
+  margin: 20px auto;
 }
 .featuredCars .carTitle {
-	font-size: 1.3rem;
+  font-size: 1.3rem;
 }
 .featuredCars .carPrice {
-	font-size: larger;
+  font-size: larger;
 }
 .moreBtn {
-	padding: 1em;
-	text-align: center;
-	grid-column: 2/3;
-	background-color: lightgray;
-	color: white;
-	border-radius: 30px;
+  padding: 1em;
+  text-align: center;
+  grid-column: 2/3;
+  background-color: lightgray;
+  color: white;
+  border-radius: 30px;
 }
 .reviewWrapper {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	width: 70%;
-	margin: auto;
-	gap: 1.5em;
-	margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 70%;
+  margin: auto;
+  gap: 1.5em;
+  margin-bottom: 20px;
 }
 .reviewCard {
-	box-shadow: 0 0 5px lightgray;
-	border-radius: 10px;
+  box-shadow: 0 0 5px lightgray;
+  border-radius: 10px;
 }
 .reviewCard .cardBody {
-	padding: 1em;
+  padding: 1em;
 }
 
 /* DETAIL PAGE */
 /* MAIN */
 #detailMain {
-	margin: 3em 20em;
+  margin: 3em 20em;
 }
 #detailWrapper {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .carImage {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 0.5em;
-	width: 70%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5em;
+  width: 70%;
 }
 .subImage {
-	display: flex;
-	gap: 0.3em;
-	overflow: hidden;
+  display: flex;
+  gap: 0.3em;
+  overflow: hidden;
 }
 .subImage img {
-	width: 20%;
+  width: 20%;
 }
 .carDetail {
-	margin: 0 0 0 3em;
+  margin: 0 0 0 3em;
 }
 .carDetail a {
-	padding: 1em;
-	background-color: lightgray;
-	border-radius: 30px;
-	color: white;
+  padding: 1em;
+  background-color: lightgray;
+  border-radius: 30px;
+  color: white;
 }
 .carDetail p {
-	color: gray;
-	font-size: smaller;
-	margin-bottom: 2em;
-	width: 70%;
+  color: gray;
+  font-size: smaller;
+  margin-bottom: 2em;
+  width: 70%;
 }
 .carDetail h2:first-of-type {
-	font-weight: 400;
+  font-weight: 400;
+}
+
+/* LOGIN PAGE */
+
+#loginMain,
+#signinMain {
+  padding: 20px;
+  max-width: 600px;
+  margin: 5rem auto;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+#loginMain h2,
+#signinMain h2 {
+  text-align: center;
+  font-size: 35px;
+}
+
+#loginForm,
+#signinForm {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+#loginForm label,
+#signinForm label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#loginForm input,
+#signinForm input {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+#loginForm input:focus,
+#signinForm input:focus {
+  border-color: red;
+  outline: none;
+}
+
+#loginBtn,
+#signinBtn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  -webkit-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  -ms-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
+}
+
+#loginBtn:hover,
+#signinBtn:hover {
+  background-color: darkred;
+}
+
+#loginMain a,
+#signinMain a {
+  font-weight: bold;
+  color: rgb(196, 52, 0);
+  margin: 0 1.5em;
+}
+
+.errors {
+  color: rgb(175, 0, 0);
+  font-weight: bold;
+  padding: 1em 1.5em 0em 1.5em;
 }
