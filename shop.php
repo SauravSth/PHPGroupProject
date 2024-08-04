@@ -44,32 +44,12 @@
 		</header>
 		<main id="shopMain">
 			<div id="shopMainWrapper">
-				<!-- <?php
-					// if (!empty($models)){
-					// 	foreach ($models as $model) {
-					// 	// Fetch the make name using the make_id
-					// 	$make = $db->read('makes', ['id' => $model['make_id']])[0]['name'];
-
-					// 	echo '<div class="carCard">';
-					// 	echo '  <div class="cardHeader">';
-					// 	echo '      <img src="./public/img' . htmlspecialchars($model['image']) . '" alt="' . htmlspecialchars($model['name']) . '"/>';
-					// 	echo '  </div>';
-					// 	echo '  <div class="cardBody">';
-					// 	echo '      <p class="carTitle"><strong>' . htmlspecialchars($make) . ' ' . htmlspecialchars($model['name']) . '</strong></p>';
-					// 	echo '      <p class="carPrice">$' . number_format($model['price'], 2) . '</p>';
-					// 	echo '  </div>';
-					// 	echo '</div>';
-					// 	}
-					// }
-				?> -->
 				<?php
 					if (!empty($models)){
 					foreach ($models as $model) {
-						// Fetch the make name using the make_id
 						$make = $db->read('makes', ['id' => $model['make_id']])[0]['name'];
-
-						// Wrap the entire card content inside an anchor tag linking to details.php with the car ID as a query parameter
-						echo '<a href="details.php?id=' . $model['id'] . '" class="carCard">'; // Added anchor tag with car ID
+						
+						echo '<a href="details.php?id=' . $model['id'] . '" class="carCard">'; 
 
 						echo '  <div class="cardHeader">';
 						echo '      <img src="./public/img' . htmlspecialchars($model['image']) . '" alt="' . htmlspecialchars($model['name']) . '"/>';
@@ -79,7 +59,7 @@
 						echo '      <p class="carPrice">$' . number_format($model['price'], 2) . '</p>';
 						echo '  </div>';
 
-						echo '</a>'; // Closed anchor tag
+						echo '</a>'; 
 					}
 					}
 					?>
