@@ -30,6 +30,9 @@ nav a {
 }
 .btnHover {
   cursor: pointer;
+  border-radius: 30px;
+  padding: 1em;
+  margin: 0;
   &:hover {
     background-color: black;
     color: white;
@@ -202,24 +205,51 @@ form button {
 
 /* SHOP CARS */
 /* HEADER */
-.searchBar form {
+
+#shopHeader form {
   width: 40%;
-  border: 1px solid lightgray;
   margin-left: 30%;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 0.3em 1.3em;
+  border: 1px solid lightgray;
+  box-shadow: 0px 0px 5px lightgray;
   border-radius: 40px;
+}
+.searchBar {
   display: flex;
   align-items: center;
-  box-shadow: 0px 0px 5px lightgray;
+  padding: 0.3em 1.3em;
 }
-
 .searchBar input {
   border: none;
   width: 100%;
   margin-left: 30px;
+  border-bottom: 1px solid lightgray;
 }
-
+.shopFormAlt {
+  padding: 0.3em 1.3em;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.carPriceRange {
+  margin-left: 40px;
+}
+#shopHeader input[type='submit'] {
+  width: 50%;
+  margin-bottom: 10px;
+  background-color: lightgray;
+  color: white;
+  &:hover {
+    cursor: pointer;
+    transition: all 0.3s;
+    background-color: black;
+  }
+}
 /* MAIN */
 #shopMain {
   padding: 2em 15em;
@@ -296,18 +326,18 @@ form button {
 /* DETAIL PAGE */
 /* MAIN */
 #detailMain {
-  margin: 3em 15em;
+  margin: 3em 20em;
 }
 #detailWrapper {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 }
 .carImage {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.3em;
-  width: 50%;
+  gap: 0.5em;
+  width: 70%;
 }
 .subImage {
   display: flex;
@@ -316,6 +346,9 @@ form button {
 }
 .subImage img {
   width: 20%;
+}
+.carDetail {
+  margin: 0 0 0 3em;
 }
 .carDetail a {
   padding: 1em;
@@ -327,6 +360,7 @@ form button {
   color: gray;
   font-size: smaller;
   margin-bottom: 2em;
+  width: 70%;
 }
 .carDetail h2:first-of-type {
   font-weight: 400;

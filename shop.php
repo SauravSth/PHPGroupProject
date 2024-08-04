@@ -1,9 +1,57 @@
 <?php
-      require_once './db_queries/db.php';
+require_once './db_queries/db.php';
 
-      $db = new Database();
+$db = new Database();
 
-      $models = $db->read('models');
+// Initialize the base query and conditions array
+$query = "SELECT * FROM models WHERE 1=1";
+$conditions = [];
+$params = [];
+
+// Check if the form is submitted with any filter criteria
+if (!empty($_GET)) {
+    // Filter by make
+    if (!empty($_GET['make_id'])) {
+        $make_id = (int)$_GET['make_id'];
+        $conditions[] = "make_id = ?";
+        $params[] = $make_id;
+    }
+
+    // Filter by year
+    if (!empty($_GET['year'])) {
+        $year = (int)$_GET['year'];
+        $conditions[] = "year = ?";
+        $params[] = $year;
+    }
+
+    // Filter by price range
+    if (!empty($_GET['price_min'])) {
+        $price_min = (float)$_GET['price_min'];
+        $conditions[] = "price >= ?";
+        $params[] = $price_min;
+    }
+    if (!empty($_GET['price_max'])) {
+        $price_max = (float)$_GET['price_max'];
+        $conditions[] = "price <= ?";
+        $params[] = $price_max;
+    }
+
+    // Filter by model name
+    if (!empty($_GET['model'])) {
+        $model = $db->sanitize($_GET['model']);
+        $conditions[] = "name LIKE ?";
+        $params[] = "%$model%";
+    }
+
+    // Combine conditions into the query
+    if (count($conditions) > 0) {
+        $query .= " AND " . implode(" AND ", $conditions);
+    }
+}
+
+// Execute the query using the query method
+$models = $db->query($query, $params);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,32 +63,50 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<nav>
-			<div class="navLeft">
-				<ul>
-					<li class="logo">
-						<a href="./index.php">Store Name</a>
-					</li>
-					<li><a href="./shop.php">Shop Cars</a></li>
-					<li><a href="./contact.php">Contact Us</a></li>
-				</ul>
-			</div>
-			<div class="navRight">
-				<a href="./login.php">Login or Signup</a>
-			</div>
-		</nav>
-		<header>
-			<div class="searchBar">
-				<form action="">
+				<?php include './nav.php' ?>
+
+		<header id="shopHeader">
+			<form method="GET" action="shop.php">
+				<div class="searchBar">
 					<div class="icon">
 						<img src="./public/img/icons/search-svgrepo-com.svg" alt="" />
 					</div>
 					<input
 						type="text"
-						placeholder="Search vehicle, model, etc."
+						name="model"
+						id="model"
+						placeholder="Search model"
 					/>
-				</form>
-			</div>
+				</div>
+				<div class="shopFormAlt">
+					<div class="carMake">
+						<label for="make">Car Make:</label>
+						<select name="make_id" id="make">
+							<option value="">All Makes</option>
+							<?php
+							require_once './db_queries/db.php';
+							$db = new Database();
+							$makes = $db->read('makes');
+							foreach ($makes as $make) {
+								echo "<option value='" . htmlspecialchars($make['id']) . "'>" . htmlspecialchars($make['name']) . "</option>";
+							}
+							?>
+						</select>
+					</div>
+					<div class="carYear">
+						<label for="year">Year:</label>
+						<input type="number" name="year" id="year" placeholder="e.g., 2020">
+					</div>
+					<div class="carPriceRange">
+						<label for="price_min">Price Range:</label>
+						<div class="priceInput">
+							<input type="number" name="price_min" id="price_min" placeholder="Min"> 
+							<input type="number" name="price_max" id="price_max" placeholder="Max">
+						</div>
+					</div>
+				</div>
+				<input type="submit" value="Search">
+			</form>
 		</header>
 		<main id="shopMain">
 			<div id="shopMainWrapper">
@@ -64,66 +130,7 @@
 
 			</div>
 		</main>
-		<footer>
-			<div id="footerWrapper">
-				<div class="browseByMake">
-					<p><strong>Browse By Make and Model</strong></p>
-					<ul>
-						<li>Dodge Challenger</li>
-						<li>Ford F-150</li>
-						<li>Ford Mustang</li>
-						<li>Honda Civic</li>
-						<li>Hyundai Elantra</li>
-					</ul>
-				</div>
-				<div class="browseByStyle">
-					<p><strong>Browse By Style</strong></p>
-					<ul>
-						<li>SUV</li>
-						<li>Sedan</li>
-						<li>Hatchback</li>
-						<li>Truck</li>
-						<li>Van</li>
-					</ul>
-				</div>
-				<div class="browseByLocation">
-					<p><strong>Browse By Location</strong></p>
-					<ul>
-						<li>Toronto</li>
-						<li>Kitchener</li>
-						<li>Waterloo</li>
-						<li>Cambridge</li>
-						<li>Barrie</li>
-					</ul>
-				</div>
-				<div class="explore">
-					<p><strong>Explore</strong></p>
-					<ul>
-						<li>Home</li>
-						<li>Shop Cars</li>
-						<li>Sell or Trade</li>
-						<li>Finance</li>
-						<li>Vehicle Protection</li>
-					</ul>
-				</div>
-				<div class="company">
-					<p><strong>Company</strong></p>
-					<ul>
-						<li>About Us</li>
-						<li>Careers</li>
-						<li>Blog</li>
-						<li>FAQ</li>
-					</ul>
-				</div>
-				<div class="contactUs">
-					<p><strong>Contact Us</strong></p>
-					<ul>
-						<li>Chat with us</li>
-						<li>Call us at (123)123-1234</li>
-						<li>Email us at: test@demo.com</li>
-					</ul>
-				</div>
-			</div>
-		</footer>
+				<?php include './footer.php' ?>
+
 	</body>
 </html>

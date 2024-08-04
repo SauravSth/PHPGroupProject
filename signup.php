@@ -59,20 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Register</title>
 </head>
 <body>
-    <nav>
-        <div class="navLeft">
-            <ul>
-                <li class="logo">
-                    <a href="./home.php">Store Name</a>
-                </li>
-                <li><a href="./shop.php">Shop Cars</a></li>
-                <li><a href="./contact.php">Contact Us</a></li>
-            </ul>
-        </div>
-        <div class="navRight">
-            <a href="./login.php">Login or Signup</a>
-        </div>
-    </nav>
+
+<?php include './nav.php' ?>
+
     <main id="signinMain">
         <h2>Sign Up</h2>
 
@@ -103,5 +92,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         <a href="login.php">Already have an account? Log in here</a>
     </main>
+
+    <?php include './footer.php' ?>
+
 </body>
 </html>
