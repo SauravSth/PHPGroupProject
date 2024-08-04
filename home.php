@@ -27,7 +27,15 @@
 				</ul>
 			</div>
 			<div class="navRight">
+			<?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin'): ?>
+				<a href="./admin_dashboard.php">Admin Dashboard</a>
+			<?php endif; ?>
+
+			<?php if (isset($_SESSION['user_id'])): ?>
+				<a href="./logout.php">Logout</a>
+			<?php else: ?>
 				<a href="./login.php">Login or Signup</a>
+			<?php endif; ?>
 			</div>
 		</nav>
 		<header id="indexHeader">

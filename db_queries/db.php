@@ -46,22 +46,43 @@ class Database {
         return htmlspecialchars(strip_tags($data));
     }
 
+    // public function query($sql, $params = []) {
+    //     $stmt = $this->conn->prepare($sql);
+
+    //     if ($params) {
+    //         $types = str_repeat('s', count($params));  // Assuming all parameters are strings; adjust as needed
+    //         $stmt->bind_param($types, ...$params);
+    //     }
+
+    //     if ($stmt->execute()) {
+    //         $result = $stmt->get_result();
+    //         return $result->fetch_all(MYSQLI_ASSOC);
+    //     } else {
+    //         error_log("Query failed: " . $stmt->error);  // Log the error
+    //         return false;
+    //     }
+    // }
+
+
     public function query($sql, $params = []) {
-        $stmt = $this->conn->prepare($sql);
+    $stmt = $this->conn->prepare($sql);
 
-        if ($params) {
-            $types = str_repeat('s', count($params));  // Assuming all parameters are strings; adjust as needed
-            $stmt->bind_param($types, ...$params);
+    if ($params) {
+        $types = '';
+        foreach ($params as $param) {
+            $types .= is_int($param) ? 'i' : (is_double($param) ? 'd' : 's');
         }
-
-        if ($stmt->execute()) {
-            $result = $stmt->get_result();
-            return $result->fetch_all(MYSQLI_ASSOC);
-        } else {
-            error_log("Query failed: " . $stmt->error);  // Log the error
-            return false;
-        }
+        $stmt->bind_param($types, ...$params);
     }
+
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } else {
+        error_log("Query failed: " . $stmt->error);  // Log the error
+        return false;
+    }
+}
 
     public function create($table, $fields, $values) {
         $fieldStr = implode(',', $fields);
