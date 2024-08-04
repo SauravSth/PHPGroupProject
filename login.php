@@ -62,6 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     		<?php include './nav.php' ?>
+<main id="loginMain">
 
     <h1>Login</h1>
     
@@ -84,6 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
     
     <a href="signup.php">Don't have an account? Sign up here</a>
+</main>
     		<?php include './footer.php' ?>
 
 </body>
