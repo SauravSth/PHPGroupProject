@@ -45,10 +45,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./public/css/reset.css">
+
     <link href="./public/css/styles.css" rel="stylesheet" />
     <title>Sign Up</title>
 </head>
 <body>
+    		<?php include './nav.php' ?>
+
     <h1>Sign Up</h1>
     
     <?php if (!empty($errors)): ?>
@@ -77,5 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </form>
     
     <a href="login.php">Already have an account? Log in here</a>
+    		<?php include './footer.php' ?>
+
 </body>
 </html>

@@ -54,10 +54,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./public/css/reset.css">
     <link href="./public/css/styles.css" rel="stylesheet" />
     <title>Login</title>
 </head>
 <body>
+    		<?php include './nav.php' ?>
+
     <h1>Login</h1>
     
     <?php if (!empty($errors)): ?>
@@ -79,5 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </form>
     
     <a href="signup.php">Don't have an account? Sign up here</a>
+    		<?php include './footer.php' ?>
+
 </body>
 </html>
