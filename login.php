@@ -1,5 +1,11 @@
 <?php
 require_once './db_queries/db.php';
+session_start();
+
+if (isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = trim($_POST['email']);
@@ -27,8 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             // Verify password
             if (password_verify($password, $user[0]['password'])) {
-                // Start session and set user data
-                session_start();
+                // Secure session start
+                session_regenerate_id(true);
                 $_SESSION['user_id'] = $user[0]['id'];
                 $_SESSION['email'] = $user[0]['email'];
                 
