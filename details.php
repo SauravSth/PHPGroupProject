@@ -29,7 +29,7 @@
 				</ul>
 			</div>
 			<div class="navRight">
-				<a href="login">Login or Signup</a>
+				<a href="./login.php">Login or Signup</a>
 			</div>
 		</nav>
 		<main id="detailMain">
