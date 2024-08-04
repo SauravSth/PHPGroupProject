@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 session_regenerate_id(true);
                 $_SESSION['user_id'] = $user[0]['id'];
                 $_SESSION['email'] = $user[0]['email'];
-                
+                $_SESSION['user_type'] = $user[0]['user_type'];
                 // Redirect to a protected page or dashboard
                 header("Location: index.php");
                 exit;
