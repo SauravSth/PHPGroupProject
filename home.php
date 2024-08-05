@@ -21,7 +21,7 @@
 		<header id="indexHeader">
 			<div class="bannerWrapper">
 				<div class="banner">
-					<img src="./public/img/webp/ford-f150xt.webp" alt="Car" />
+					<!-- <img src="./public/img/banner1.jpg" alt="Car" /> -->
 					<div class="bannerText">
 						The smart way to buy or sell a car
 					</div>
@@ -33,10 +33,10 @@
 							Hundreds of vehicles to fit all tastes and budgets
 						</span>
 						<span class="iconNight"
-							><img
+							><a href="./shop.php"><img
 								src="./public/img/icons/arrow-sm-right-svgrepo-com.svg"
 								alt=""
-						/></span>
+						/></a></span>
 					</div>
 				</div>
 			</div>
@@ -69,7 +69,7 @@
 					<div class="reviewCard">
 						<div class="cardHeader">
 							<img
-								src="./public/img/webp/dodge-challenger-1.webp"
+								src="./public/img/people/person1.jpg"
 								alt="Car"
 							/>
 						</div>
@@ -108,7 +108,7 @@
 					<div class="reviewCard">
 						<div class="cardHeader">
 							<img
-								src="./public/img/webp/hyundai-elantra.webp"
+								src="./public/img/people/person2.jpg"
 								alt="Car"
 							/>
 						</div>
@@ -147,7 +147,7 @@
 					<div class="reviewCard">
 						<div class="cardHeader">
 							<img
-								src="./public/img/webp/tesla-model-3.webp"
+								src="./public/img/people/person3.jpeg"
 								alt="Car"
 							/>
 						</div>
@@ -186,7 +186,7 @@
 					<div class="reviewCard">
 						<div class="cardHeader">
 							<img
-								src="./public/img/webp/kia-rio.webp"
+								src="./public/img/people/person4.jpeg"
 								alt="Car"
 							/>
 						</div>

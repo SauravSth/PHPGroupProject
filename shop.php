@@ -120,6 +120,7 @@ $models = $db->query($query, $params);
 						echo '  </div>';
 						echo '  <div class="cardBody">';
 						echo '      <p class="carTitle"><strong>' . htmlspecialchars($make) . ' ' . htmlspecialchars($model['name']) . '</strong></p>';
+						echo '      <p class="carYear">Year: ' . $model['year'] . '</p>';
 						echo '      <p class="carPrice">$' . number_format($model['price'], 2) . '</p>';
 						echo '  </div>';
 
