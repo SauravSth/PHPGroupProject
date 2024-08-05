@@ -38,7 +38,7 @@ $pdf->AddPage();
 $pdf->SetFont('Arial', 'B', 20);
 
 // Add company logo
-$pdf->Image('./public/img/logo/logo-invoice.png', 10, 10, 50); // Adjust path and size as needed
+$pdf->Image('../public/img/logo/logo-invoice.png', 10, 10, 50); // Adjust path and size as needed
 
 $pdf->Cell(0, 10, 'Invoice', 0, 1, 'C');
 $pdf->Ln(10);

@@ -76,7 +76,7 @@ $ordersCount = count($ordersCount);
         <a href="./admin_dashboard.php">Dashboard</a>
         <a href="./users.php">Manage Users</a>
         <a href="./car_models.php">Manage Car Models</a>
-        <a href="../logout.php">Logout</a>
+        <a href="../customer/logout.php">Logout</a>
     </div>
 
     <div class="container">

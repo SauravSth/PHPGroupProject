@@ -1,5 +1,5 @@
 <?php
-require_once './db_queries/db.php';
+require_once '../db_queries/db.php';
 
 
 
@@ -19,8 +19,8 @@ if ($cart->checkout($userId)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/css/reset.css">
-    <link href="./public/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../public/css/reset.css">
+    <link href="../public/css/styles.css" rel="stylesheet" />
     <title>Checkout</title>
 </head>
 <body>
