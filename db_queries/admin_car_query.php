@@ -14,7 +14,7 @@
 
 <!-- CREATE -->
 <?php
-require_once 'db_conn.php';
+require_once 'db.php';
 
 $db = new Database();
 
@@ -28,9 +28,9 @@ if (isset($_POST['add'])) {
     $color = $db->sanitize($_POST['color']);
     
     // Handle image upload
-    $target_dir = "uploads/";
+    $target_dir = "../public/img/";
     $image_name = basename($_FILES["image"]["name"]);
-    $target_file = $target_dir . uniqid() . "_" . $image_name;
+    $target_file = "/" . $image_name;
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
@@ -87,7 +87,7 @@ if (isset($_POST['add'])) {
 
 
 <?php
-require_once 'db_conn.php';
+require_once 'db.php';
 
 $db = new Database();
 
@@ -117,7 +117,7 @@ if ($cars) {
 <!-- UPDATE -->
 
 <?php
-require_once 'db_conn.php';
+require_once 'db.php';
 
 $db = new Database();
 
@@ -164,7 +164,7 @@ if (isset($_POST['update'])) {
 <!-- DELETE -->
 
 <?php
-require_once 'db_conn.php';
+require_once 'db.php';
 
 $db = new Database();
 

@@ -352,14 +352,55 @@ class Cart {
         return $this->db->read('cart', ['user_id' => $userId]);
     }
 
-    public function checkout($userId) {
-        $userId = $this->db->sanitize($userId);
+    // public function checkout($userId) {
+    //     $userId = $this->db->sanitize($userId);
 
+    //     // Get cart items
+    //     $cartItems = $this->getCartItems($userId);
+
+    //     if (empty($cartItems)) {
+    //         return false;  // No items in the cart
+    //     }
+
+    //     // Calculate total amount
+    //     $totalAmount = 0;
+    //     foreach ($cartItems as $item) {
+    //         $model = $this->db->read('models', ['id' => $item['model_id']]);
+    //         $totalAmount += $model[0]['price'] * $item['quantity'];
+    //     }
+
+    //     // Create order
+    //     $orderCreated = $this->db->create('orders', ['user_id', 'total_amount', 'order_status', 'payment_status'], [$userId, $totalAmount, 'pending', 'pending']);
+
+    //     if ($orderCreated) {
+    //         $this->lastOrderId = $this->db->getConn()->insert_id;  // Store the last inserted order id
+
+    //         // Add order items
+    //         foreach ($cartItems as $item) {
+    //             $model = $this->db->read('models', ['id' => $item['model_id']]);
+    //             $this->db->create('order_items', ['order_id', 'model_id', 'quantity', 'price'], [$this->lastOrderId, $item['model_id'], $item['quantity'], $model[0]['price']]);
+    //         }
+
+    //         // Clear cart
+    //         $this->db->delete('cart', ['user_id' => $userId]);
+
+    //         return true;  // Successful checkout
+    //     }
+
+    //     return false;  // Checkout failed
+    // }
+
+
+public function checkout($userId) {
+    $userId = $this->db->sanitize($userId);
+    $this->db->getConn()->begin_transaction();  // Start transaction
+
+    try {
         // Get cart items
         $cartItems = $this->getCartItems($userId);
 
         if (empty($cartItems)) {
-            return false;  // No items in the cart
+            throw new Exception("No items in the cart");  // Throw exception if no items
         }
 
         // Calculate total amount
@@ -372,23 +413,30 @@ class Cart {
         // Create order
         $orderCreated = $this->db->create('orders', ['user_id', 'total_amount', 'order_status', 'payment_status'], [$userId, $totalAmount, 'pending', 'pending']);
 
-        if ($orderCreated) {
-            $this->lastOrderId = $this->db->getConn()->insert_id;  // Store the last inserted order id
-
-            // Add order items
-            foreach ($cartItems as $item) {
-                $model = $this->db->read('models', ['id' => $item['model_id']]);
-                $this->db->create('order_items', ['order_id', 'model_id', 'quantity', 'price'], [$this->lastOrderId, $item['model_id'], $item['quantity'], $model[0]['price']]);
-            }
-
-            // Clear cart
-            $this->db->delete('cart', ['user_id' => $userId]);
-
-            return true;  // Successful checkout
+        if (!$orderCreated) {
+            throw new Exception("Failed to create order");  // Throw exception if order creation fails
         }
 
+        $this->lastOrderId = $this->db->getConn()->insert_id;  // Store the last inserted order id
+
+        // Add order items
+        foreach ($cartItems as $item) {
+            $model = $this->db->read('models', ['id' => $item['model_id']]);
+            $this->db->create('order_items', ['order_id', 'model_id', 'quantity', 'price'], [$this->lastOrderId, $item['model_id'], $item['quantity'], $model[0]['price']]);
+        }
+
+        // Clear cart
+        $this->db->delete('cart', ['user_id' => $userId]);
+
+        $this->db->getConn()->commit();  // Commit transaction
+        return true;  // Successful checkout
+    } catch (Exception $e) {
+        $this->db->getConn()->rollback();  // Rollback transaction on error
+        error_log("Checkout failed: " . $e->getMessage());  // Log error message
         return false;  // Checkout failed
     }
+}
+
 
     public function getLastOrderId() {
         return $this->lastOrderId;  // Getter for the last order ID
