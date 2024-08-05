@@ -14,6 +14,7 @@ $cart = new Cart();
 $userId = $_SESSION['user_id'];
 
 if ($cart->checkout($userId)) {
+    $orderId = $cart->getLastOrderId(); // Assuming you have a method to retrieve the last order ID
     $successMessage = "Checkout successful! Your order has been placed.";
 } else {
     $errorMessage = "Checkout failed. Please try again.";
@@ -48,6 +49,7 @@ if ($cart->checkout($userId)) {
         <?php if (isset($successMessage)): ?>
             <div class="successMessage">
                 <p><?php echo htmlspecialchars($successMessage); ?></p>
+                <p><a href="invoice.php?order_id=<?php echo $orderId; ?>" target="_blank">Download Invoice</a></p>
             </div>
             <a href="shop.php">Continue Shopping</a>
         <?php elseif (isset($errorMessage)): ?>
