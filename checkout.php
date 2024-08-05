@@ -1,14 +1,8 @@
 <?php
 require_once './db_queries/db.php';
-require_once './Cart.php';
+// require_once './Cart.php';
 
-session_start();
 
-// Ensure the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit;
-}
 
 $cart = new Cart();
 $userId = $_SESSION['user_id'];
@@ -26,22 +20,12 @@ if ($cart->checkout($userId)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/css/styles.css">
+    <link rel="stylesheet" href="./public/css/reset.css">
+    <link href="./public/css/styles.css" rel="stylesheet" />
     <title>Checkout</title>
 </head>
 <body>
-    <nav>
-        <div class="navLeft">
-            <ul>
-                <li class="logo"><a href="./home.php">Store Name</a></li>
-                <li><a href="./shop.php">Shop Cars</a></li>
-                <li><a href="./contact.php">Contact Us</a></li>
-            </ul>
-        </div>
-        <div class="navRight">
-            <a href="./login.php">Login or Signup</a>
-        </div>
-    </nav>
+<?php include './nav.php' ?>
     
     <main id="checkoutMain">
         <h2>Checkout</h2>
@@ -49,7 +33,7 @@ if ($cart->checkout($userId)) {
         <?php if (isset($successMessage)): ?>
             <div class="successMessage">
                 <p><?php echo htmlspecialchars($successMessage); ?></p>
-                <p><a href="invoice.php?order_id=<?php echo $orderId; ?>" target="_blank">Download Invoice</a></p>
+                <p><a href="invoice.php?order_id=<?php echo $orderId; ?>">Download Invoice</a></p>
             </div>
             <a href="shop.php">Continue Shopping</a>
         <?php elseif (isset($errorMessage)): ?>
@@ -58,5 +42,6 @@ if ($cart->checkout($userId)) {
             </div>
         <?php endif; ?>
     </main>
+    	<?php include './footer.php' ?>
 </body>
 </html>

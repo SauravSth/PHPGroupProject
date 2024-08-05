@@ -2,7 +2,6 @@
 require_once ("./fpdf186/fpdf.php");
 require_once ("./db_queries/db.php");
 
-
 // Fetch the order_id from query parameter
 $order_id = isset($_GET['order_id']) ? (int)$_GET['order_id'] : 0;
 
@@ -20,9 +19,15 @@ if (empty($order)) {
 }
 $order = $order[0]; // Get the first result
 
+// Fetch user details
+$user = $db->read('users', ['id' => $order['user_id']]);
+if (empty($user)) {
+    die('User not found');
+}
+$user = $user[0]; // Get the first result
+
 // Fetch order items
 $order_items = $db->read('order_items', ['order_id' => $order_id]);
-
 if (empty($order_items)) {
     die('No items found for this order');
 }
@@ -30,12 +35,21 @@ if (empty($order_items)) {
 // Create instance of FPDF
 $pdf = new FPDF();
 $pdf->AddPage();
-$pdf->SetFont('Arial', 'B', 16);
+$pdf->SetFont('Arial', 'B', 20);
 
 // Add company logo
-$pdf->Image('./public/img/logo/logo.png', 10, 10, 30); // Adjust path and size as needed
+$pdf->Image('./public/img/logo/logo-invoice.png', 10, 10, 50); // Adjust path and size as needed
 
 $pdf->Cell(0, 10, 'Invoice', 0, 1, 'C');
+$pdf->Ln(10);
+
+// Add user details
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(0, 10, 'Customer Details:', 0, 1);
+$pdf->SetFont('Arial', '', 12);
+$pdf->Cell(0, 10, 'Name: ' . htmlspecialchars($user['first_name'] . ' ' . $user['last_name']), 0, 1);
+$pdf->Cell(0, 10, 'Email: ' . htmlspecialchars($user['email']), 0, 1);
+$pdf->Cell(0, 10, 'Phone: ' . htmlspecialchars($user['phone_number']), 0, 1);
 $pdf->Ln(10);
 
 // Add order details
@@ -59,7 +73,7 @@ foreach ($order_items as $item) {
     $model = $db->read('models', ['id' => $item['model_id']]);
     $model = $model[0]; // Get the first result
 
-    $pdf->Cell(90, 10, $model['name'], 1);
+    $pdf->Cell(90, 10, htmlspecialchars($model['name']), 1);
     $pdf->Cell(30, 10, $item['quantity'], 1);
     $pdf->Cell(30, 10, '$' . number_format($item['price'], 2), 1);
     $pdf->Cell(30, 10, '$' . number_format($item['quantity'] * $item['price'], 2), 1);

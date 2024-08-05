@@ -41,7 +41,6 @@ $cartItems = $cart->getCartItems($userId);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./public/css/reset.css">
-
     <link href="./public/css/styles.css" rel="stylesheet" />
     <title>Cart</title>
 </head>
@@ -88,13 +87,13 @@ $cartItems = $cart->getCartItems($userId);
 
             <p>Total Amount: <?php echo htmlspecialchars($totalAmount); ?></p>
             <input type="submit" name="update" value="Update Cart">
-            <a href="checkout.php">Proceed to Checkout</a>
         </form>
+        <a href="./checkout.php">Proceed to Checkout</a>
     <?php else: ?>
         <p>Your cart is empty.</p>
     <?php endif; ?>
 
-    <a href="index.php">Continue Shopping</a>
+    <a href="./index.php">Continue Shopping</a>
     	<?php include './footer.php' ?>
 
 </body>
