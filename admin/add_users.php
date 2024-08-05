@@ -1,14 +1,23 @@
 <?php
-require_once ("../db_queries/db.php");
+require_once '../db_queries/db.php';
 
+// Ensure user is an admin
 session_start();
-
-if (isset($_SESSION['user_id'])) {
-    header("Location: index.php");
+if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
+    header("Location: ../customer/login.php");
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+$db = new Database();
+// Fetch all makes
+$makes = $db->read('makes');
+?>
+
+
+
+<?php
+if (isset($_POST['add'])) {
     $db = new Database();
 
     // Sanitize inputs
@@ -22,8 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     $errors = [];
     
-    // Validate form inputs
-    if (empty($firstname)) {
+    // Validate
+   if (empty($firstname)) {
     $errors[] = "First name is required.";
 } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $firstname)) {
     $errors[] = "First name can only contain letters, hyphens, apostrophes, and spaces.";
@@ -78,30 +87,41 @@ if (empty($phone)) {
                 ['first_name', 'last_name', 'address', 'phone_number', 'email', 'password', 'user_type'], 
                 [$firstname, $lastname, $address, $phone, $email, $hashedPassword, $userType]
             );
-            $successMessage = "Registration successful. Redirecting to login page...";
-            header("refresh:2;url=login.php");
+            $successMessage = "User Added";
+            header("refresh:2;url=./view_users.php");
         }
     }
 }
+
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/reset.css" />
-    <link rel="stylesheet" href="../public/css/styles.css" />
-    <title>Register</title>
+    <title>Add New Car</title>
+      <link rel="stylesheet" href="../public/css/reset.css">
+    <link rel="stylesheet" href="../public/css/styles.css">
 </head>
 <body>
-
-<?php include './nav.php' ?>
-
-    <main id="signinMain">
-        <h2>Sign Up</h2>
-
-        <?php if (!empty($errors)): ?>
+    <nav>
+        <div class="navLeft">
+            <ul>
+                <li class="logo"><a href="./admin_dashboard.php">Dashboard</a></li>
+                <li><a href="./manage_models.php">Manage Models</a></li>
+                <li><a href="./manage_makes.php">Manage Makes</a></li>
+            </ul>
+        </div>
+        <div class="navRight">
+            <a href="./logout.php">Logout</a>
+        </div>
+    </nav>
+    <main>
+        <h1>Add New User</h1>
+                <?php if (!empty($errors)): ?>
             <div class="errors">
                 <?php foreach ($errors as $error): ?>
                     <p><?php echo htmlspecialchars($error); ?></p>
@@ -113,7 +133,7 @@ if (empty($phone)) {
             <p><?php echo htmlspecialchars($successMessage); ?></p>
         <?php endif; ?>
         
-        <form method="POST" action="signup.php" id="signinForm">
+        <form method="POST" action="" id="signinForm">
             <label for="firstname">First Name:</label>
             <input type="text" name="firstname" id="firstname" value="<?php echo isset($firstname) ? htmlspecialchars($firstname) : ''; ?>" autocomplete="off"><br>
 
@@ -135,13 +155,8 @@ if (empty($phone)) {
             <label for="confirm_password">Confirm Password:</label>
             <input type="password" name="confirm_password" id="confirm_password" autocomplete="off"><br>
 
-            <input type="submit" value="Sign Up" id="signinBtn">
+            <input type="submit" value="Add User" name="add">
         </form>
-
-        <a href="login.php">Already have an account? Log in here</a>
     </main>
-
-    <?php include './footer.php' ?>
-
 </body>
 </html>
