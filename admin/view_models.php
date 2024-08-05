@@ -42,8 +42,10 @@ if ($cars) {
         echo "<p>Price: $" . htmlspecialchars($car['price']) . "</p>";
         echo "<p>Description: " . htmlspecialchars($car['description']) . "</p>";
         echo "<p>Color: " . htmlspecialchars($car['color']) . "</p>";
-        echo "<a href='edit_models.php?id=" . htmlspecialchars($car['id']) . "'>Edit</a> | ";
-        echo "<a href='delete_models.php?id=" . htmlspecialchars($car['id']) . "' onclick='return confirm(\"Are you sure?\")'>Delete</a>";
+        echo "<div class='iconWrapper'>";
+        echo "<a href='edit_models.php?id=" . htmlspecialchars($car['id']) . "'><img src='../public/img/icons/edit-3-svgrepo-com.svg' class='iconAdmin'></a> ";
+        echo "<a href='delete_models.php?id=" . htmlspecialchars($car['id']) . "' onclick='return confirm(\"Are you sure?\")'><img src='../public/img/icons/delete-recycle-bin-trash-can-svgrepo-com.svg' class='iconAdmin'></a>";
+        echo "</div>";
         echo "<hr>";
         echo "</div>";
         echo "<img src='" . htmlspecialchars($car['image']) . "' alt='" . htmlspecialchars($car['name']) . "'>";

@@ -116,6 +116,7 @@ nav a {
 	border-radius: 50%;
 	width: 4%;
 }
+
 .rating {
 	display: flex;
 	margin-bottom: 10px;
@@ -366,7 +367,6 @@ form button {
 	display: grid;
 	grid-template-columns: 1fr;
 	gap: 0.5em;
-	width: 70%;
 }
 .subImage {
 	display: flex;
@@ -427,7 +427,7 @@ form button {
 
 #loginForm input,
 #signinForm input {
-	margin-bottom: 20px;
+	/* margin-bottom: 10px; */
 	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
@@ -485,7 +485,8 @@ form button {
 #cartMain,
 #checkoutMain,
 #editModelMain,
-#addModelMain {
+#addModelMain,
+#addUserMain {
 	width: 60%;
 	margin: auto;
 	display: flex;
@@ -615,4 +616,77 @@ form button {
 #editModelMain :is(input, textarea, button),
 #addModelMain :is(input, textarea, button) {
 	padding: 1em;
+}
+
+/* VIEW MODEL */
+
+#viewModelMain li {
+	list-style-type: square;
+	font-size: 1.5rem;
+}
+
+#viewUserMain,
+#viewOrderMain {
+	width: 50%;
+	margin: 0 auto;
+}
+#viewUserMain h1 {
+	margin: 0 0 20px 0;
+}
+#viewOrderMain h1 {
+	text-align: center;
+}
+#viewUserMain table,
+#viewOrderMain table {
+	margin: 20px auto;
+	border-collapse: collapse;
+	border: 2px solid var(--color-accent);
+	margin-bottom: 10px;
+}
+#viewUserMain :is(th, td),
+#viewOrderMain :is(th, td) {
+	padding: 0.6em 1em;
+}
+#viewUserMain td:last-of-type:hover,
+#viewOrderMain td:last-of-type:hover {
+	background-color: var(--color-accent);
+	transition: all 0.3s;
+	& a {
+		color: white;
+	}
+}
+#viewUserMain tbody tr:nth-child(even),
+#viewOrderMain tbody tr:nth-child(even) {
+	background-color: rgb(103, 95, 80);
+	color: white;
+	& a {
+		color: white;
+	}
+}
+#viewUserMain thead tr:first-of-type,
+#viewOrderMain thead tr:first-of-type {
+	background-color: var(--color-accent);
+	color: white;
+}
+#viewUserMain tr:nth-child(even) td:last-of-type:hover,
+#viewOrderMain tr:nth-child(even) td:last-of-type:hover {
+	background-color: var(--color-secondary);
+	transition: all 0.3s;
+	& a {
+		color: black;
+	}
+}
+.adminForm {
+	width: 50%;
+}
+#viewModelMain .viewModelWrapper div img.iconAdmin,
+#viewUserMain img.iconAdmin {
+	width: 2em;
+	border-radius: 0;
+}
+.iconWrapper {
+	display: flex;
+}
+.iconWrapper * {
+	margin: 5px;
 }

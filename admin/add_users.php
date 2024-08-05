@@ -107,19 +107,8 @@ if (empty($phone)) {
     <link rel="stylesheet" href="../public/css/styles.css">
 </head>
 <body>
-    <nav>
-        <div class="navLeft">
-            <ul>
-                <li class="logo"><a href="./admin_dashboard.php">Dashboard</a></li>
-                <li><a href="./manage_models.php">Manage Models</a></li>
-                <li><a href="./manage_makes.php">Manage Makes</a></li>
-            </ul>
-        </div>
-        <div class="navRight">
-            <a href="./logout.php">Logout</a>
-        </div>
-    </nav>
-    <main>
+    <?php include('./admin_navbar.php'); ?>
+    <main id="addUserMain">
         <h1>Add New User</h1>
                 <?php if (!empty($errors)): ?>
             <div class="errors">
@@ -133,7 +122,7 @@ if (empty($phone)) {
             <p><?php echo htmlspecialchars($successMessage); ?></p>
         <?php endif; ?>
         
-        <form method="POST" action="" id="signinForm">
+        <form method="POST" action="" id="signinForm" class="adminForm">
             <label for="firstname">First Name:</label>
             <input type="text" name="firstname" id="firstname" value="<?php echo isset($firstname) ? htmlspecialchars($firstname) : ''; ?>" autocomplete="off"><br>
 
@@ -155,7 +144,7 @@ if (empty($phone)) {
             <label for="confirm_password">Confirm Password:</label>
             <input type="password" name="confirm_password" id="confirm_password" autocomplete="off"><br>
 
-            <input type="submit" value="Add User" name="add">
+            <button type="submit" name="add" class="btnHover">Add User</button>
         </form>
     </main>
 </body>

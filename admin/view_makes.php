@@ -20,18 +20,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
     <link rel="stylesheet" href="../public/css/styles.css">
 </head>
 <body>
-    <nav>
-        <div class="navLeft">
-            <ul>
-                <li class="logo"><a href="./admin_dashboard.php">Dashboard</a></li>
-                <li><a href="./manage_users.php">Manage Users</a></li>
-                <li><a href="./manage_orders.php">Manage Orders</a></li>
-            </ul>
-        </div>
-        <div class="navRight">
-            <a href="../customer/logout.php">Logout</a>
-        </div>
-    </nav>
+    <?php include('./admin_navbar.php') ?>
     <main id="viewModelMain">
         <h1>View Models</h1>
         <?php
@@ -44,11 +33,10 @@ $makes = $db->read('makes');
 if ($makes) {
     foreach ($makes as $make) {
         echo "<div>";
-        echo "<p>" . htmlspecialchars($make['name']) . "</p>";
-        echo "<a href='edit_models.php?id=" . htmlspecialchars($make['id']) . "'>Edit</a> | ";
-        echo "<a href='delete_models.php?id=" . htmlspecialchars($make['id']) . "' onclick='return confirm(\"Are you sure?\")'>Delete</a>";
-        echo "</div>";
+        echo "<ul>";
+        echo "<li>" . htmlspecialchars($make['name']) . "</li>";
         echo "<hr>";
+        echo "</ul>";
     }
 } else {
     echo "No makes available.";

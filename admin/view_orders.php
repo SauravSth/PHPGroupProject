@@ -19,19 +19,8 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
     <link rel="stylesheet" href="../public/css/styles.css">
 </head>
 <body>
-    <nav>
-        <div class="navLeft">
-            <ul>
-                <li class="logo"><a href="./admin_dashboard.php">Dashboard</a></li>
-                <li><a href="./manage_users.php">Manage Users</a></li>
-                <li><a href="./manage_orders.php">Manage Orders</a></li>
-            </ul>
-        </div>
-        <div class="navRight">
-            <a href="../customer/logout.php">Logout</a>
-        </div>
-    </nav>
-    <main id="viewModelMain">
+    <?php include('./admin_navbar.php')?>
+    <main id="viewOrderMain">
         <h1>Manage Orders</h1>
 
         <?php

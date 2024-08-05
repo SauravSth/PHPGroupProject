@@ -19,21 +19,10 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
     <link rel="stylesheet" href="../public/css/styles.css">
 </head>
 <body>
-    <nav>
-        <div class="navLeft">
-            <ul>
-                <li class="logo"><a href="./admin_dashboard.php">Dashboard</a></li>
-                <li><a href="./manage_users.php">Manage Users</a></li>
-                <li><a href="./manage_orders.php">Manage Orders</a></li>
-            </ul>
-        </div>
-        <div class="navRight">
-            <a href="../customer/logout.php">Logout</a>
-        </div>
-    </nav>
-    <main id="viewModelMain">
+    <?php include('./admin_navbar.php') ?>
+    <main id="viewUserMain">
         <h1>Manage Users</h1>
-        <a href="./add_users.php">Add User</a>
+        <a href="./add_users.php" class="btnHover border">Add User</a>
         <?php
         $db = new Database();
 
@@ -62,7 +51,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
                 echo "<td>" . htmlspecialchars($user['email']) . "</td>";
                 echo "<td>" . htmlspecialchars($user['phone_number']) . "</td>";
                 echo "<td>";
-                echo "<a href='edit_users.php?id=" . htmlspecialchars($user['id']) . "'>Edit</a> | ";
+                echo "<a href='edit_users.php?id=" . htmlspecialchars($user['id']) . "'><img src='../public/img/icons/edit-3-svgrepo-com.svg' class='iconAdmin'></a>";
                 echo "</td>";
                 echo "</tr>";
             }
