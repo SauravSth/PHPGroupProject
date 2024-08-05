@@ -29,10 +29,10 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
             </ul>
         </div>
         <div class="navRight">
-            <a href="./logout.php">Logout</a>
+            <a href="../customer/logout.php">Logout</a>
         </div>
     </nav>
-    <main>
+    <main id="viewModelMain">
         <h1>Manage Models</h1>
         <a href="./add_models.php">Add Car </a>
         <?php

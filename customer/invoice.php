@@ -1,6 +1,6 @@
 <?php
-require_once ("./fpdf186/fpdf.php");
-require_once ("./db_queries/db.php");
+require_once ("../fpdf186/fpdf.php");
+require_once ("../db_queries/db.php");
 
 // Fetch the order_id from query parameter
 $order_id = isset($_GET['order_id']) ? (int)$_GET['order_id'] : 0;

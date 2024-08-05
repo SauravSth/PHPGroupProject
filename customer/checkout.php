@@ -1,6 +1,5 @@
 <?php
 require_once './db_queries/db.php';
-// require_once './Cart.php';
 
 
 

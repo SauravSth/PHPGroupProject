@@ -1,5 +1,5 @@
 <?php
-	require_once './db_queries/db.php';
+	require_once '../db_queries/db.php';
 
 	$db = new Database();
 	$car_id = $_GET['id'];
@@ -23,8 +23,8 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="./public/css/reset.css" />
-		<link rel="stylesheet" href="./public/css/styles.css" />
+		<link rel="stylesheet" href="../public/css/reset.css" />
+		<link rel="stylesheet" href="../public/css/styles.css" />
 		<title>Car Detail</title>
 	</head>
 	<body>
@@ -33,9 +33,9 @@
 		<main id="detailMain">
 			<div id="detailWrapper">
 				<div class="carImage">
-				<img src="./public/img<?php echo htmlspecialchars($car['image']); ?>" alt="car" />
+				<img src="<?php echo htmlspecialchars($car['image']); ?>" alt="car" />
 				<div class="subImage">
-					<img src="./public/img<?php echo htmlspecialchars($car['image']); ?>" alt="car" />
+					<img src="<?php echo htmlspecialchars($car['image']); ?>" alt="car" />
 				</div>
 				</div>
 				<div class="carDetail">
@@ -44,9 +44,8 @@
 				<h2>$<?php echo number_format($car['price'], 2); ?></h2>
 				<p><?php echo htmlspecialchars($car['description']); ?></p>
 				<p>Color: <?php echo htmlspecialchars($car['color']); ?></p>
-				<form action="" method="post">
-					<button type="submit" class="btnHover">Add to Cart</a>
-				</form>
+				 <a href="../db_queries/add_to_cart.php?model_id=<?= htmlspecialchars($car['id']) ?>" class="btnHover">Add to Cart</a>
+
 				</div>
 			</div>
 		</main>

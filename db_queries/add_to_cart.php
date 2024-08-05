@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_id'])) {
     // Redirect to login or show error if user is not logged in
 
     // echo("Please Login");
-    header("Location: ../login.php");
+    header("Location: ../customer/login.php");
     exit();
 }
 
@@ -21,10 +21,10 @@ if (isset($_GET['model_id'])) {
     // Add item to cart with quantity 1
     if ($cart->addItem($userId, $modelId, 1)) {
         // Redirect or show success message
-        header("Location: ../index.php?success=Item added to cart");
+        header("Location: ../customer/shop.php?success=Item added to cart");
     } else {
         // Redirect or show error message
-        header("Location: ../index.php?error=Failed to add item to cart");
+        header("Location: ../customer/shop.php");
     }
 } else {
     // Redirect or show error if model_id is not provided

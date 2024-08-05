@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once './db_queries/db.php';
+require_once '../db_queries/db.php';
 
 if (!isset($_SESSION['user_id'])) {
     // Redirect to login if user is not logged in

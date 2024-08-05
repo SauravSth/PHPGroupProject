@@ -1,5 +1,5 @@
 <?php
-require_once './db_queries/db.php';
+require_once '../db_queries/db.php';
 
 $db = new Database();
 
@@ -58,8 +58,8 @@ $models = $db->query($query, $params);
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="./public/css/reset.css" />
-		<link rel="stylesheet" href="./public/css/styles.css" />
+		<link rel="stylesheet" href="../public/css/reset.css" />
+		<link rel="stylesheet" href="../public/css/styles.css" />
 		<title>Document</title>
 	</head>
 	<body>
@@ -69,7 +69,7 @@ $models = $db->query($query, $params);
 			<form method="GET" action="shop.php">
 				<div class="searchBar">
 					<div class="icon">
-						<img src="./public/img/icons/search-svgrepo-com.svg" alt="" />
+						<img src="../public/img/icons/search-svgrepo-com.svg" alt="" />
 					</div>
 					<input
 						type="text"
@@ -84,7 +84,7 @@ $models = $db->query($query, $params);
 						<select name="make_id" id="make">
 							<option value="">All Makes</option>
 							<?php
-							require_once './db_queries/db.php';
+							require_once '../db_queries/db.php';
 							$db = new Database();
 							$makes = $db->read('makes');
 							foreach ($makes as $make) {
@@ -116,7 +116,7 @@ $models = $db->query($query, $params);
 						$make = $db->read('makes', ['id' => $model['make_id']])[0]['name'];
 						echo '<a href="details.php?id=' . $model['id'] . '" class="carCard">'; 
 						echo '  <div class="cardHeader">';
-						echo '      <img src="./public/img' . htmlspecialchars($model['image']) . '" alt="' . htmlspecialchars($model['name']) . '"/>';
+						echo '      <img src="' . htmlspecialchars($model['image']) . '" alt="' . htmlspecialchars($model['name']) . '"/>';
 						echo '  </div>';
 						echo '  <div class="cardBody">';
 						echo '      <p class="carTitle"><strong>' . htmlspecialchars($make) . ' ' . htmlspecialchars($model['name']) . '</strong></p>';
