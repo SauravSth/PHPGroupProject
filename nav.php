@@ -13,7 +13,7 @@
       </div>
       <div class="navRight">
       <?php if (isset($_SESSION['user_id']) && $_SESSION['user_type'] === 'admin'): ?>
-            <a href="./admin_dashboard.php">Admin Dashboard</a>
+            <a href="./admin/admin_dashboard.php">Admin Dashboard</a>
       <?php endif; ?>
 
       <?php if (isset($_SESSION['user_id'])): ?>
