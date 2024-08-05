@@ -20,6 +20,9 @@ body {
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
 }
+main {
+	min-height: 60vh;
+}
 
 img,
 picture,
@@ -51,6 +54,7 @@ h6 {
 a {
 	text-decoration: none;
 	font: inherit;
+	color: black;
 }
 
 li {

@@ -47,54 +47,59 @@ $cartItems = $cart->getCartItems($userId);
 <body>
 	<?php include './nav.php' ?>
 
-    <h1>Your Cart</h1>
+    <main id="cartMain">
 
-    <?php if (!empty($cartItems)): ?>
-        <form method="POST" action="cart.php">
-            <table border="1">
-                <tr>
-                    <th>Make</th>
-                    <th>Model</th>
-                    <th>Year</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th>Action</th>
-                </tr>
-                <?php
-                $totalAmount = 0;
-                foreach ($cartItems as $item):
-                    $model = $db->read('models', ['id' => $item['model_id']])[0];
-                    $make = $db->read('makes', ['id' => $model['make_id']])[0]['name'];
-                    $itemTotal = $model['price'] * $item['quantity'];
-                    $totalAmount += $itemTotal;
-                ?>
+        <h1>Your Cart</h1>
+    
+        <?php if (!empty($cartItems)): ?>
+            <form method="POST" action="cart.php">
+                <table>
                     <tr>
-                        <td><?php echo htmlspecialchars($make); ?></td>
-                        <td><?php echo htmlspecialchars($model['name']); ?></td>
-                        <td><?php echo htmlspecialchars($model['year']); ?></td>
-                        <td><?php echo htmlspecialchars($model['price']); ?></td>
-                        <td>
-                            <input type="number" name="quantity[<?php echo htmlspecialchars($model['id']); ?>]" value="<?php echo htmlspecialchars($item['quantity']); ?>" min="1">
-                        </td>
-                        <td><?php echo htmlspecialchars($itemTotal); ?></td>
-                        <td>
-                            <a href="cart.php?remove=<?php echo htmlspecialchars($model['id']); ?>">Remove</a>
-                        </td>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Year</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
                     </tr>
-                <?php endforeach; ?>
-            </table>
-
-            <p>Total Amount: <?php echo htmlspecialchars($totalAmount); ?></p>
-            <input type="submit" name="update" value="Update Cart">
-        </form>
-        <a href="./checkout.php">Proceed to Checkout</a>
-    <?php else: ?>
-        <p>Your cart is empty.</p>
-    <?php endif; ?>
-
-    <a href="./index.php">Continue Shopping</a>
-    	<?php include './footer.php' ?>
+                    <?php
+                    $totalAmount = 0;
+                    foreach ($cartItems as $item):
+                        $model = $db->read('models', ['id' => $item['model_id']])[0];
+                        $make = $db->read('makes', ['id' => $model['make_id']])[0]['name'];
+                        $itemTotal = $model['price'] * $item['quantity'];
+                        $totalAmount += $itemTotal;
+                    ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($make); ?></td>
+                            <td><?php echo htmlspecialchars($model['name']); ?></td>
+                            <td><?php echo htmlspecialchars($model['year']); ?></td>
+                            <td><?php echo htmlspecialchars($model['price']); ?></td>
+                            <td>
+                                <input type="number" name="quantity[<?php echo htmlspecialchars($model['id']); ?>]" value="<?php echo htmlspecialchars($item['quantity']); ?>" min="1">
+                            </td>
+                            <td><?php echo htmlspecialchars($itemTotal); ?></td>
+                            <td>
+                                <a href="cart.php?remove=<?php echo htmlspecialchars($model['id']); ?>">Remove</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+    
+                <p class="cartTotal">Total Amount: $<?php echo htmlspecialchars($totalAmount); ?></p>
+                <input type="submit" name="update" value="Update Cart" class="btnHover">
+            </form>
+            <div class="continueShopping">
+                <a href="./checkout.php" class="btnHover border">Proceed to Checkout</a>
+            <?php else: ?>
+                <p>Your cart is empty.</p>
+            <?php endif; ?>
+        
+            <a href="./shop.php" class="btnHover border">Continue Shopping</a>
+            </div>
+    </main>
+    <?php include './footer.php' ?>
 
 </body>
 </html>

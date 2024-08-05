@@ -28,78 +28,34 @@ $ordersCount = count($ordersCount);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/css/styles.css">
+    <link rel="stylesheet" href="../public/css/reset.css">
+    <link rel="stylesheet" href="../public/css/styles.css">
     <title>Admin Dashboard</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 20px;
-        }
-        .card {
-            background: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 20px;
-            padding: 20px;
-            text-align: center;
-        }
-        .card h3 {
-            margin: 0;
-            font-size: 24px;
-        }
-        .card p {
-            font-size: 18px;
-            color: #555;
-        }
-        .navbar {
-            background: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-        }
-    </style>
 </head>
 <body>
-    <div class="navbar">
-        <a href="./admin_dashboard.php">Dashboard</a>
-        <a href="./users.php">Manage Users</a>
-        <a href="./car_models.php">Manage Car Models</a>
-        <a href="../customer/logout.php">Logout</a>
-    </div>
+    <?php include('./admin_navbar.php') ?>
 
     <div class="container">
         <h1>Admin Dashboard</h1>
         <div class="card">
             <h3>Number of Makes</h3>
-            <p><?php echo $makesCount; ?></p>
-            <a href="./view_makes.php">View Makes</a>
+            <p><?php echo $makesCount; ?></p><br>
+            <a href="./view_makes.php" class="btnHover border">View Makes</a>
         </div>
         <div class="card">
             <h3>Number of Models</h3>
-            <p><?php echo $modelsCount; ?></p>
-            <a href="./view_models.php">View Models</a>
+            <p><?php echo $modelsCount; ?></p><br>
+            <a href="./view_models.php" class="btnHover border">View Models</a>
         </div>
         <div class="card">
             <h3>Number of Users</h3>
-            <p><?php echo $usersCount; ?></p>
-            <a href="./view_users.php">View Users</a>
+            <p><?php echo $usersCount; ?></p><br>
+            <a href="./view_users.php" class="btnHover border">View Users</a>
         </div>
         <div class="card">
             <h3>Number of Orders</h3>
-            <p><?php echo $ordersCount; ?></p>
-            <a href="./view_orders.php">View Orders</a>
+            <p><?php echo $ordersCount; ?></p><br>
+            <a href="./view_orders.php" class="btnHover border">View Orders</a>
         </div>
     </div>
 </body>

@@ -40,7 +40,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				$_SESSION['user_type'] = $user[0]['user_type'];
                 
                 // Redirect to a protected page or dashboard
-                header("Location: index.php");
+                if (isset($_SESSION['user_id']) && $_SESSION['user_type'] === 'admin') {
+                    header("Location: ../admin/admin_dashboard.php");
+                }
+                if (isset($_SESSION['user_id']) && $_SESSION['user_type'] === 'customer'){
+                    header("Location: home.php");
+                }
                 exit;
             } else {
                 $errors[] = "Invalid password.";

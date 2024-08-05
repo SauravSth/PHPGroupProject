@@ -109,19 +109,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../public/css/styles.css">
 </head>
 <body>
-    <nav>
-        <div class="navLeft">
-            <ul>
-                <li class="logo"><a href="./admin_dashboard.php">Dashboard</a></li>
-                <li><a href="./manage_users.php">Manage Users</a></li>
-                <li><a href="./manage_orders.php">Manage Orders</a></li>
-            </ul>
-        </div>
-        <div class="navRight">
-            <a href="./logout.php">Logout</a>
-        </div>
-    </nav>
-    <main>
+    <?php include('./admin_navbar.php') ?>
+    <main id="editModelMain">
         <h1>Edit Model</h1>
         <form action="" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="model_id" value="<?php echo htmlspecialchars($model['id']); ?>">
@@ -140,10 +129,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="image">Upload New Image:</label>
             <input type="file" id="image" name="image" accept="image/*">
             
-            <button type="submit">Update Model</button>
+            <button type="submit" class="btnHover">Update Model</button>
         </form>
-
-
     </main>
 </body>
 </html>

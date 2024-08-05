@@ -15,6 +15,9 @@ nav {
 .navLeft {
 	flex-grow: 0.3;
 }
+.navRight a {
+	margin-right: 20px;
+}
 .logo {
 	width: 5em;
 	font-size: 3.25rem;
@@ -476,4 +479,140 @@ form button {
 }
 #viewModelMain img {
 	width: 20%;
+}
+
+/* CART */
+#cartMain,
+#checkoutMain,
+#editModelMain,
+#addModelMain {
+	width: 60%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+#cartMain table {
+	border-collapse: collapse;
+	border: 2px solid var(--color-accent);
+	margin-bottom: 10px;
+}
+#cartMain :is(th, td) {
+	padding: 0.6em 1em;
+}
+#cartMain td:last-of-type:hover {
+	background-color: var(--color-accent);
+	transition: all 0.3s;
+	& a {
+		color: white;
+	}
+}
+#cartMain tr:nth-child(odd) {
+	background-color: rgb(103, 95, 80);
+	color: white;
+	& a {
+		color: white;
+	}
+}
+#cartMain tr:first-of-type {
+	background-color: var(--color-accent);
+}
+#cartMain tr:nth-child(odd) td:last-of-type:hover {
+	background-color: var(--color-secondary);
+	transition: all 0.3s;
+	& a {
+		color: black;
+	}
+}
+.cartTotal {
+	font-size: larger;
+}
+.border {
+	border: 1px solid var(--color-accent);
+}
+.continueShopping {
+	display: flex;
+	gap: 10px;
+}
+.successMessage {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 10px;
+}
+.successMessage p {
+	margin-bottom: 20px;
+}
+
+/* ADMIN */
+.container {
+	width: 80%;
+	margin: auto;
+	padding: 20px;
+}
+.card {
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	margin: 20px;
+	padding: 1.5em;
+	text-align: center;
+}
+
+.card h3 {
+	margin: 0;
+	font-size: 24px;
+}
+.card p {
+	font-size: 18px;
+	color: #555;
+}
+.navbar {
+	background: #333;
+	color: #fff;
+	padding: 10px;
+	text-align: center;
+}
+.navbar a {
+	color: #fff;
+	text-decoration: none;
+	margin: 0 15px;
+}
+
+/* VIEW MODEL */
+.viewModelWrapper {
+	display: flex;
+	border: 2px solid var(--color-accent);
+	justify-content: space-between;
+	border-radius: 20px;
+	align-items: center;
+	margin-bottom: 10px;
+	padding: 2em;
+}
+.viewModelWrapper p {
+	color: var(--color-accent);
+}
+#viewModelHeader {
+	padding: 2em 0;
+	/* text-align: right; */
+}
+#viewModelHeader h1 {
+	margin-bottom: 30px;
+}
+
+/* EDIT MODEL */
+#editModelMain,
+#addModelMain {
+	margin-top: 20px;
+}
+#editModelMain form,
+#addModelMain form {
+	display: flex;
+	flex-direction: column;
+}
+#editModelMain :is(input, textarea, button),
+#addModelMain :is(input, textarea, button) {
+	padding: 1em;
 }

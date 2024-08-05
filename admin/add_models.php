@@ -85,22 +85,11 @@ if (isset($_POST['add'])) {
     <link rel="stylesheet" href="../public/css/styles.css">
 </head>
 <body>
-    <nav>
-        <div class="navLeft">
-            <ul>
-                <li class="logo"><a href="./admin_dashboard.php">Dashboard</a></li>
-                <li><a href="./manage_models.php">Manage Models</a></li>
-                <li><a href="./manage_makes.php">Manage Makes</a></li>
-            </ul>
-        </div>
-        <div class="navRight">
-            <a href="./logout.php">Logout</a>
-        </div>
-    </nav>
-    <main>
+    <?php include('./admin_navbar.php') ?>
+    <main id="addModelMain">
         <h1>Add New Car</h1>
         <form action="" method="POST" enctype="multipart/form-data">
-            <div>
+            
                 <label for="make">Make:</label>
                 <select id="make" name="make_id" required>
                     <option value="">Select Make</option>
@@ -110,32 +99,26 @@ if (isset($_POST['add'])) {
                     </option>
                 <?php endforeach; ?>
                 </select>
-            </div>
-            <div>
+          
                 <label for="name">Model Name:</label>
                 <input type="text" id="name" name="name" required>
-            </div>
-            <div>
+            
                 <label for="year">Year:</label>
                 <input type="number" id="year" name="year" required>
-            </div>
-            <div>
+           
                 <label for="price">Price:</label>
                 <input type="number" id="price" name="price" step="0.01" required>
-            </div>
-            <div>
+            
                 <label for="color">Color:</label>
                 <input type="text" id="color" name="color" required>
-            </div>
-            <div>
+           
                 <label for="description">Description:</label>
                 <textarea id="description" name="description" rows="4" required></textarea>
-            </div>
-            <div>
+           
                 <label for="image">Car Image:</label>
                 <input type="file" id="image" name="image" accept="image/*" required>
-            </div>
-            <input type="submit" name="add" value="Add Car">
+            
+            <button type="submit" name="add" class="btnHover">Add Car</button>
         </form>
     </main>
 </body>

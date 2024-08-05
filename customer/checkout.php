@@ -32,9 +32,9 @@ if ($cart->checkout($userId)) {
         <?php if (isset($successMessage)): ?>
             <div class="successMessage">
                 <p><?php echo htmlspecialchars($successMessage); ?></p>
-                <p><a href="invoice.php?order_id=<?php echo $orderId; ?>">Download Invoice</a></p>
+                <a href="invoice.php?order_id=<?php echo $orderId; ?>" class="btnHover border">Download Invoice</a>
             </div>
-            <a href="shop.php">Continue Shopping</a>
+            <a href="shop.php" class="btnHover border">Continue Shopping</a>
         <?php elseif (isset($errorMessage)): ?>
             <div class="errorMessage">
                 <p><?php echo htmlspecialchars($errorMessage); ?></p>
