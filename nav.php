@@ -2,7 +2,7 @@
       <div class="navLeft">
             <ul>
                   <li class="logo">
-                        <a href="./home.php"><img src="./public/img/png/logo-black-no-background.png" alt="logo"></a>
+                        <a href="./home.php"><img src="./public/img/logo/logo.png" alt="logo" id="logoImg"></a>
                   </li>
                   <li><a href="./shop.php">Shop Cars</a></li>
                   <li><a href="./contact.php">Contact Us</a></li>
