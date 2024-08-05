@@ -40,10 +40,10 @@
 				</div>
 				<div class="carDetail">
 				<h2><?php echo htmlspecialchars($make) . ' ' . htmlspecialchars($car['name']); ?></h2>
+				<h2>Year: <?php echo $car['year']; ?></h2>
 				<h2>$<?php echo number_format($car['price'], 2); ?></h2>
 				<p><?php echo htmlspecialchars($car['description']); ?></p>
-				<p><?php echo htmlspecialchars($car['color']); ?></p>
-				<p>$50 Shipping</p>
+				<p>Color: <?php echo htmlspecialchars($car['color']); ?></p>
 				<form action="" method="post">
 					<button type="submit" class="btnHover">Add to Cart</a>
 				</form>
