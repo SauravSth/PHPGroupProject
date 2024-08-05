@@ -2,7 +2,7 @@
       <div class="navLeft">
             <ul>
                   <li class="logo">
-                        <a href="./home.php"><img src="./public/img/logo/logo.png" alt="logo" id="logoImg"></a>
+                        <a href="./home.php"><img src="../public/img/logo/logo.png" alt="logo" id="logoImg"></a>
                   </li>
                   <li><a href="./shop.php">Shop Cars</a></li>
                   <li><a href="./contact.php">Contact Us</a></li>
@@ -13,7 +13,7 @@
       </div>
       <div class="navRight">
       <?php if (isset($_SESSION['user_id']) && $_SESSION['user_type'] === 'admin'): ?>
-            <a href="./admin/admin_dashboard.php">Admin Dashboard</a>
+            <a href="../admin/admin_dashboard.php">Admin Dashboard</a>
       <?php endif; ?>
 
       <?php if (isset($_SESSION['user_id'])): ?>

@@ -1,5 +1,5 @@
 <?php
-require_once './db_queries/db.php';
+require_once '../db_queries/db.php';
 
 $db = new Database();
 ?>
@@ -9,8 +9,8 @@ $db = new Database();
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="./public/css/reset.css" />
-		<link rel="stylesheet" href="./public/css/styles.css" />
+		<link rel="stylesheet" href="../public/css/reset.css" />
+		<link rel="stylesheet" href="../public/css/styles.css" />
 		<title>Contact Us</title>
 	</head>
 	<body>
@@ -21,7 +21,7 @@ $db = new Database();
 				<h2>Got a question? We're here to help.</h2>
 			</div>
 			<div class="headerRight">
-				<img src="./public/img/webp/honda-civic-touring.webp" alt="Car" />
+				<img src="../public/img/webp/honda-civic-touring.webp" alt="Car" />
 			</div>
 		</header>
 		<main id="contactMain">

@@ -1,5 +1,5 @@
 <?php
-require_once './db_queries/db.php';
+require_once '../db_queries/db.php';
 require_once './Cart.php';
 
 session_start();
@@ -26,22 +26,12 @@ if ($cart->checkout($userId)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/reset.css">
     <link rel="stylesheet" href="./public/css/styles.css">
     <title>Checkout</title>
 </head>
 <body>
-    <nav>
-        <div class="navLeft">
-            <ul>
-                <li class="logo"><a href="./home.php">Store Name</a></li>
-                <li><a href="./shop.php">Shop Cars</a></li>
-                <li><a href="./contact.php">Contact Us</a></li>
-            </ul>
-        </div>
-        <div class="navRight">
-            <a href="./login.php">Login or Signup</a>
-        </div>
-    </nav>
+    <?php include('./nav.php') ?>
     
     <main id="checkoutMain">
         <h2>Checkout</h2>
@@ -58,5 +48,7 @@ if ($cart->checkout($userId)) {
             </div>
         <?php endif; ?>
     </main>
+    <?php include('./footer.php') ?>
+
 </body>
 </html>

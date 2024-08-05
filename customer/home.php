@@ -1,5 +1,5 @@
 <?php
-      require_once './db_queries/db.php';
+      require_once '../db_queries/db.php';
 
       $db = new Database();
 
@@ -11,8 +11,8 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="./public/css/reset.css" />
-		<link rel="stylesheet" href="./public/css/styles.css" />
+		<link rel="stylesheet" href="../public/css/reset.css" />
+		<link rel="stylesheet" href="../public/css/styles.css" />
 		<title>Car Store | Home</title>
 	</head>
 	<body>
@@ -34,7 +34,7 @@
 						</span>
 						<span class="iconNight"
 							><a href="./shop.php"><img
-								src="./public/img/icons/arrow-sm-right-svgrepo-com.svg"
+								src="../public/img/icons/arrow-sm-right-svgrepo-com.svg"
 								alt=""
 						/></a></span>
 					</div>
@@ -51,7 +51,7 @@
 
 						echo '<div class="carCard">';
 						echo '  <div class="cardHeader">';
-						echo '      <img src="./public/img' . htmlspecialchars($model['image']) . '" alt="' . htmlspecialchars($model['name']) . '"/>';
+						echo '      <img src="' . htmlspecialchars($model['image']) . '" alt="' . htmlspecialchars($model['name']) . '"/>';
 						echo '  </div>';
 						echo '  <div class="cardBody">';
 						echo '      <p class="carTitle"><strong>' . htmlspecialchars($make) . ' ' . htmlspecialchars($model['name']) . '</strong></p>';
@@ -69,29 +69,29 @@
 					<div class="reviewCard">
 						<div class="cardHeader">
 							<img
-								src="./public/img/people/person1.jpg"
+								src="../public/img/people/person1.jpg"
 								alt="Car"
 							/>
 						</div>
 						<div class="cardBody">
 							<div class="rating">
 								<img
-									src="./public/img/icons/star-sharp-svgrepo-com.svg"
+									src="../public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./public/img/icons/star-sharp-svgrepo-com.svg"
+									src="../public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./public/img/icons/star-sharp-svgrepo-com.svg"
+									src="../public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./public/img/icons/star-sharp-svgrepo-com.svg"
+									src="../public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
@@ -108,29 +108,29 @@
 					<div class="reviewCard">
 						<div class="cardHeader">
 							<img
-								src="./public/img/people/person2.jpg"
+								src="../public/img/people/person2.jpg"
 								alt="Car"
 							/>
 						</div>
 						<div class="cardBody">
 							<div class="rating">
 								<img
-									src="./public/img/icons/star-sharp-svgrepo-com.svg"
+									src="../public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./public/img/icons/star-sharp-svgrepo-com.svg"
+									src="../public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./public/img/icons/star-sharp-svgrepo-com.svg"
+									src="../public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./public/img/icons/star-sharp-svgrepo-com.svg"
+									src="../public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
@@ -147,29 +147,29 @@
 					<div class="reviewCard">
 						<div class="cardHeader">
 							<img
-								src="./public/img/people/person3.jpeg"
+								src="../public/img/people/person3.jpeg"
 								alt="Car"
 							/>
 						</div>
 						<div class="cardBody">
 							<div class="rating">
 								<img
-									src="./public/img/icons/star-sharp-svgrepo-com.svg"
+									src="../public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./public/img/icons/star-sharp-svgrepo-com.svg"
+									src="../public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./public/img/icons/star-sharp-svgrepo-com.svg"
+									src="../public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./public/img/icons/star-sharp-svgrepo-com.svg"
+									src="../public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
@@ -186,29 +186,29 @@
 					<div class="reviewCard">
 						<div class="cardHeader">
 							<img
-								src="./public/img/people/person4.jpeg"
+								src="../public/img/people/person4.jpeg"
 								alt="Car"
 							/>
 						</div>
 						<div class="cardBody">
 							<div class="rating">
 								<img
-									src="./public/img/icons/star-sharp-svgrepo-com.svg"
+									src="../public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./public/img/icons/star-sharp-svgrepo-com.svg"
+									src="../public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./public/img/icons/star-sharp-svgrepo-com.svg"
+									src="../public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>
 								<img
-									src="./public/img/icons/star-sharp-svgrepo-com.svg"
+									src="../public/img/icons/star-sharp-svgrepo-com.svg"
 									alt="stars"
 									class="stars"
 								/>

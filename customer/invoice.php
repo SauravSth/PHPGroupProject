@@ -1,6 +1,6 @@
 <?php
-require_once ("./fpdf186/fpdf.php");
-require_once ("./db_queries/db.php");
+require_once ("../fpdf186/fpdf.php");
+require_once ("../db_queries/db.php");
 
 
 // Fetch the order_id from query parameter
@@ -33,7 +33,7 @@ $pdf->AddPage();
 $pdf->SetFont('Arial', 'B', 16);
 
 // Add company logo
-$pdf->Image('./public/img/logo/logo.png', 10, 10, 30); // Adjust path and size as needed
+$pdf->Image('../public/img/logo/logo.png', 10, 10, 30); // Adjust path and size as needed
 
 $pdf->Cell(0, 10, 'Invoice', 0, 1, 'C');
 $pdf->Ln(10);

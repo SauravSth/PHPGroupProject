@@ -3,9 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="./public/css/reset.css">
+            <link rel="stylesheet" href="../public/css/reset.css">
 
-        <link href="./public/css/styles.css" rel="stylesheet" />
+        <link href="../public/css/styles.css" rel="stylesheet" />
         <title>Document</title>
         </head>
         <body>
@@ -19,7 +19,7 @@
     <select name="make_id" id="make">
         <option value="">All Makes</option>
         <?php
-        require_once './db_queries/db.php';
+        require_once '../db_queries/db.php';
         $db = new Database();
         $makes = $db->read('makes');
         foreach ($makes as $make) {
@@ -80,8 +80,8 @@ if (!empty($models)) {
         echo "<td>" . htmlspecialchars($model['year']) . "</td>";
         echo "<td>" . htmlspecialchars($model['price']) . "</td>";
         echo "<td>" . htmlspecialchars($model['description']) . "</td>";
-        echo "<td><img src='./public/img" . htmlspecialchars($model['image']) . "' alt='" . htmlspecialchars($model['name']) . "' style='width:100px;'></td>";
-        echo "<td><a href='./db_queries/add_to_cart.php?model_id=" . htmlspecialchars($model['id']) . "'>Add to Cart</a></td>";
+        echo "<td><img src='../public/img" . htmlspecialchars($model['image']) . "' alt='" . htmlspecialchars($model['name']) . "' style='width:100px;'></td>";
+        echo "<td><a href='../db_queries/add_to_cart.php?model_id=" . htmlspecialchars($model['id']) . "'>Add to Cart</a></td>";
         echo "</tr>";
     }
     echo "</table>";
