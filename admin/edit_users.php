@@ -104,7 +104,7 @@ if (isset($_POST['update'])) {
             <label for="phone">Phone Number:</label>
             <input type="text" name="phone" id="phone" value="<?php echo htmlspecialchars($user['phone_number']); ?>" autocomplete="off"><br>
 
-            <input type="submit" value="Update User" name="update">
+            <input type="submit" value="Update User" name="update" class="btnHover">
         </form>
     </main>
 </body>
