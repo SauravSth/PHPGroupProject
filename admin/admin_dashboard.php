@@ -1,26 +1,23 @@
 <?php
-require_once '../db_queries/db.php';
-
-// Start session and check if user is logged in as admin
-session_start();
-if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
-    header("Location: ../customer/login.php");
-    exit;
-}
-
-// Create instance of Database class
-$db = new Database();
-
-// Fetch counts
-$makesCount = $db->read('makes', [], null); // Adjust table name if needed
-$modelsCount = $db->read('models', [], null);
-$usersCount = $db->read('users', [], null); // Adjust table name if needed
-$ordersCount = $db->read('orders', [], null);
-
-$makesCount = count($makesCount);
-$modelsCount = count($modelsCount);
-$usersCount = count($usersCount);
-$ordersCount = count($ordersCount);
+    require_once '../db_queries/db.php';
+    
+    session_start();
+    if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
+        header("Location: ../customer/login.php");
+        exit;
+    }
+    
+    $db = new Database();
+    
+    $makesCount = $db->read('makes', [], null);
+    $modelsCount = $db->read('models', [], null);
+    $usersCount = $db->read('users', [], null);
+    $ordersCount = $db->read('orders', [], null);
+    
+    $makesCount = count($makesCount);
+    $modelsCount = count($modelsCount);
+    $usersCount = count($usersCount);
+    $ordersCount = count($ordersCount);
 ?>
 
 <!DOCTYPE html>

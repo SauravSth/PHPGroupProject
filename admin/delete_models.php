@@ -1,7 +1,6 @@
 <?php
 require_once '../db_queries/db.php';
 
-// Ensure user is an admin
 session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
     header("Location: login.php");
@@ -11,7 +10,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
 $db = new Database();
 
 if (isset($_GET['id'])) {
-    $id = (int)$_GET['id']; // Car ID to delete
+    $id = (int)$_GET['id']; 
 
     $conditions = ['id' => $id];
 

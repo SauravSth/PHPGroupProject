@@ -4,7 +4,7 @@ require_once ("../db_queries/db.php");
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-    header("Location: index.php");
+    header("Location: ./home.php");
     exit;
 }
 
@@ -73,7 +73,6 @@ if (empty($phone)) {
         }
         
         if (empty($errors)) {
-            // Insert new user into the database
             $db->create('users', 
                 ['first_name', 'last_name', 'address', 'phone_number', 'email', 'password', 'user_type'], 
                 [$firstname, $lastname, $address, $phone, $email, $hashedPassword, $userType]

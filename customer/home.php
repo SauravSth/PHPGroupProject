@@ -21,7 +21,6 @@
 		<header id="indexHeader">
 			<div class="bannerWrapper">
 				<div class="banner">
-					<!-- <img src="./public/img/banner1.jpg" alt="Car" /> -->
 					<div class="bannerText">
 						The smart way to buy or sell a car
 					</div>

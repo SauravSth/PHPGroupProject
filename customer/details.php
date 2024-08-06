@@ -12,7 +12,6 @@
     		if (isset($_SESSION['user_id'])) {
 			header("Location: cart.php");
 		} else {
-			// User is not logged in, redirect to login page
 			header("Location: login.php");
 			exit();
    		}

@@ -1,7 +1,6 @@
 <?php
 require_once '../db_queries/db.php';
 
-// Ensure user is an admin
 session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
     header("Location: login.php");
@@ -29,8 +28,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
         </header>
         <?php
         $db = new Database();
-
-// Fetch all the models data
 
 $cars = $db->read('models');
 

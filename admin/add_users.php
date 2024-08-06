@@ -1,7 +1,6 @@
 <?php
 require_once '../db_queries/db.php';
 
-// Ensure user is an admin
 session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
     header("Location: ../customer/login.php");
@@ -10,7 +9,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
 
 
 $db = new Database();
-// Fetch all makes
 $makes = $db->read('makes');
 ?>
 
@@ -32,32 +30,32 @@ if (isset($_POST['add'])) {
     $errors = [];
     
     // Validate
-   if (empty($firstname)) {
-    $errors[] = "First name is required.";
-} elseif (!preg_match("/^[a-zA-Z-' ]*$/", $firstname)) {
-    $errors[] = "First name can only contain letters, hyphens, apostrophes, and spaces.";
-}
+    if (empty($firstname)) {
+        $errors[] = "First name is required.";
+    } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $firstname)) {
+        $errors[] = "First name can only contain letters, hyphens, apostrophes, and spaces.";
+    }
 
-// Validate last name
-if (empty($lastname)) {
-    $errors[] = "Last name is required.";
-} elseif (!preg_match("/^[a-zA-Z-' ]*$/", $lastname)) {
-    $errors[] = "Last name can only contain letters, hyphens, apostrophes, and spaces.";
-}
+    // Validate last name
+    if (empty($lastname)) {
+        $errors[] = "Last name is required.";
+    } elseif (!preg_match("/^[a-zA-Z-' ]*$/", $lastname)) {
+        $errors[] = "Last name can only contain letters, hyphens, apostrophes, and spaces.";
+    }
 
-// Validate address
-if (empty($address)) {
-    $errors[] = "Address is required.";
-} elseif (strlen($address) < 5) {
-    $errors[] = "Address should be at least 5 characters long.";
-}
+    // Validate address
+    if (empty($address)) {
+        $errors[] = "Address is required.";
+    } elseif (strlen($address) < 5) {
+        $errors[] = "Address should be at least 5 characters long.";
+    }
 
-// Validate phone number
-if (empty($phone)) {
-    $errors[] = "Phone number is required.";
-} elseif (!preg_match("/^[0-9]{10}$/", $phone)) {
-    $errors[] = "Phone number must be exactly 10 digits.";
-}
+    // Validate phone number
+    if (empty($phone)) {
+        $errors[] = "Phone number is required.";
+    } elseif (!preg_match("/^[0-9]{10}$/", $phone)) {
+        $errors[] = "Phone number must be exactly 10 digits.";
+    }
 
     if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = "A valid email is required.";
@@ -75,14 +73,12 @@ if (empty($phone)) {
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
         $userType = 'customer';
         
-        // Check if the email already exists
         $existingEmail = $db->read('users', ['email' => $email]);
         if (!empty($existingEmail)) {
             $errors[] = "Email already registered.";
         }
         
         if (empty($errors)) {
-            // Insert new user into the database
             $db->create('users', 
                 ['first_name', 'last_name', 'address', 'phone_number', 'email', 'password', 'user_type'], 
                 [$firstname, $lastname, $address, $phone, $email, $hashedPassword, $userType]

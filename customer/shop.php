@@ -3,12 +3,10 @@ require_once '../db_queries/db.php';
 
 $db = new Database();
 
-// Initialize the base query and conditions array
 $query = "SELECT * FROM models WHERE 1=1";
 $conditions = [];
 $params = [];
 
-// Check if the form is submitted with any filter criteria
 if (!empty($_GET)) {
     // Filter by make
     if (!empty($_GET['make_id'])) {

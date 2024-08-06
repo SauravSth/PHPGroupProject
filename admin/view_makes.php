@@ -1,7 +1,6 @@
 <?php
 require_once '../db_queries/db.php';
 
-// Ensure user is an admin
 session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
     header("Location: login.php");
@@ -25,8 +24,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
         <h1>View Models</h1>
         <?php
         $db = new Database();
-
-// Fetch all the models data
 
 $makes = $db->read('makes');
 

@@ -1,7 +1,6 @@
 <?php
 require_once '../db_queries/db.php';
 
-// Ensure user is an admin
 session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
     header("Location: ../customer/login.php");
@@ -26,7 +25,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
         <?php
         $db = new Database();
 
-        // Fetch all orders
         $orders = $db->read('orders');
 
         if ($orders) {

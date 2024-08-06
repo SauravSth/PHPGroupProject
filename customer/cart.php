@@ -3,7 +3,6 @@ session_start();
 require_once '../db_queries/db.php';
 
 if (!isset($_SESSION['user_id'])) {
-    // Redirect to login if user is not logged in
     header("Location: ./login.php");
     exit();
 }
@@ -12,7 +11,6 @@ $db = new Database();
 $userId = $_SESSION['user_id'];
 $cart = new Cart();
 
-// Handle update quantity request
 if (isset($_POST['update'])) {
     foreach ($_POST['quantity'] as $modelId => $quantity) {
         if (is_numeric($quantity) && $quantity > 0) {
@@ -23,7 +21,6 @@ if (isset($_POST['update'])) {
     exit();
 }
 
-// Handle remove item request
 if (isset($_GET['remove'])) {
     $modelId = intval($_GET['remove']);
     $cart->removeItem($userId, $modelId);
@@ -31,7 +28,6 @@ if (isset($_GET['remove'])) {
     exit();
 }
 
-// Fetch cart items
 $cartItems = $cart->getCartItems($userId);
 ?>
 

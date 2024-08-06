@@ -1,7 +1,6 @@
 <?php
 require_once '../db_queries/db.php';
 
-// Ensure user is an admin
 session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
     header("Location: login.php");
@@ -10,7 +9,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
 
 
 $db = new Database();
-// Fetch all makes
 $makes = $db->read('makes');
 ?>
 
@@ -26,7 +24,6 @@ if (isset($_POST['add'])) {
     $price = (float)$_POST['price'];
     $description = $db->sanitize($_POST['description']);
 
-        // Handle image upload if a new image is provided
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $target_dir = "../public/img/";
             $image_name = basename($_FILES["image"]["name"]);
@@ -34,27 +31,23 @@ if (isset($_POST['add'])) {
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-            // Validate the image file
             $check = getimagesize($_FILES["image"]["tmp_name"]);
             if ($check === false) {
                 echo "File is not an image.";
                 $uploadOk = 0;
             }
 
-            // Check file size (limit to 2MB)
             if ($_FILES["image"]["size"] > 2000000) {
                 echo "Sorry, your file is too large.";
                 $uploadOk = 0;
             }
 
-            // Allow only specific file formats
             $allowed_types = ["jpg", "jpeg", "png", "gif"];
             if (!in_array($imageFileType, $allowed_types)) {
                 echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
                 $uploadOk = 0;
             }
 
-            // Attempt to upload the file if validations passed
             if ($uploadOk && move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
                 $image_path = $target_file; // Update image path
             } else {

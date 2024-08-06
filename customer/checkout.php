@@ -1,13 +1,11 @@
 <?php
 require_once '../db_queries/db.php';
 
-
-
 $cart = new Cart();
 $userId = $_SESSION['user_id'];
 
 if ($cart->checkout($userId)) {
-    $orderId = $cart->getLastOrderId(); // Assuming you have a method to retrieve the last order ID
+    $orderId = $cart->getLastOrderId(); 
     $successMessage = "Checkout successful! Your order has been placed.";
 } else {
     $errorMessage = "Checkout failed. Please try again.";
